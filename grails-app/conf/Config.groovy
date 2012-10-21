@@ -23,9 +23,9 @@ log4j = {
     warn   'org.mortbay.log'
 }
 
-grails.doc.title = "Bla Title"
-grails.doc.subtitle = "Bla Subtitle"
+//grails.doc.title = "Bla Title"
+grails.doc.subtitle = ""
 grails.doc.authors = "Benjamin Wolff"
 grails.doc.license = "EPL1"
 grails.doc.copyright = "Bla copyright..."
-grails.doc.footer = "Footer"
+grails.doc.footer = "Some footer"

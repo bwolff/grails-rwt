@@ -18,7 +18,7 @@ class RwtGrailsPlugin {
     ]
 
 //    def title = "RWT Plugin" // Headline display name of the plugin
-    def title = "The RAP Widget Toolkit (RWT) for Grails."
+    def title = "The RAP Widget Toolkit (RWT) for Grails"
     def author = "Benjamin Wolff"
     def authorEmail = "benjamin.wolff@cern.ch"
     def description = '''\
@@ -35,8 +35,8 @@ More information coming soon!
     // Extra (optional) plugin metadata
 
     // License: one of 'APACHE', 'GPL2', 'GPL3'
-//    def license = "APACHE"
-    def license = "EPL1"
+    def license = "APACHE"
+//    def license = "EPL1"
 
     // Details of company behind the plugin (if there is one)
 //    def organization = [ name: "My Company", url: "http://www.my-company.com/" ]
