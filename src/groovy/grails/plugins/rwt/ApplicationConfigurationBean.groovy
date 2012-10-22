@@ -28,16 +28,16 @@ class ApplicationConfigurationBean implements ApplicationConfiguration {
     @Override
     public void configure(Application application) {
         application.setOperationMode(operationMode)
-        log.info "RWT operation mode set to: ${operationMode}"
+        log.debug "RWT operation mode set to: ${operationMode}"
 
         entryPointConfigurations.each { EntryPointConfiguration conf ->
             IEntryPointFactory entryPointFactory = getEntryPointFactoryForBean(conf.entryPointBeanName)
-            application.addEntryPoint(conf.path, entryPointFactory, conf.props)
+            application.addEntryPoint(conf.path, entryPointFactory, conf.entryPointProperties)
 
-            log.info "Registered RWT entry point -" +
+            log.debug "Registered RWT entry point -" +
                     " Path: ${conf.path}," +
                     " EntryPoint bean: ${conf.entryPointBeanName}," +
-                    " Properties: ${conf.props}"
+                    " Properties: ${conf.entryPointProperties}"
         }
     }
 

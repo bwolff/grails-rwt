@@ -1,3 +1,17 @@
-introduction: Introduction
-gettingStarted: Getting Started
-configuration: Configuration
+introduction:
+    title: Introduction
+    knownIssues: Known/Open Issues
+    releaseNotes: Release Notes
+gettingStarted:
+    title: Getting Started
+    installation: Installation
+    createEntryPoint: Creating the Entry Point Bean
+    configureEntryPoint: Configuring the Entry Point
+    runApplication: Running the Application
+    deployApplication: Deploying the Application
+configuration:
+    title: Configuration
+    applicationConfiguration: Application Configuration
+    entryPointConfiguration: Entry Point Configuration
+advancedTopics:
+    title: Advanced Topics

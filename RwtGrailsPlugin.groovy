@@ -17,16 +17,13 @@ class RwtGrailsPlugin {
         "web-app/js/**"
     ]
 
-//    def title = "RWT Plugin" // Headline display name of the plugin
     def title = "The RAP Widget Toolkit (RWT) for Grails"
     def author = "Benjamin Wolff"
     def authorEmail = "benjamin.wolff@cern.ch"
     def description = '''\
 This plugin integrates RWT (standalone), the web-ported Standard Widget Toolkit (SWT), into your
-Grails application. It enables you to build your RWT and JFace powered UIs using Groovy and the
-complete Grails framework stacks with all its benefits...
-
-More information coming soon!
+Grails application. It enables you to build your RWT and JFace powered user interface using Groovy
+and the complete Grails framework stack with all its features and DSL sugar.
 '''
 
     // URL to the plugin's documentation
@@ -54,7 +51,7 @@ More information coming soon!
         // If there is no RWT entry points configured, don't register the RWT servlet.
         def paths = getEntryPointPaths(application)
         if (!paths) {
-            log.info "No RWT entry point configured. Skipping RWT servlet registration ..."
+            log.warn "No RWT entry point configured. Skipping RWT servlet registration ..."
             return
         }
         
@@ -88,7 +85,7 @@ More information coming soon!
         // configuration bean.
         def configurations = getEntryPointConfigurations(application)
         if (!configurations) {
-            log.info "No RWT entry points configured. Skipping RWT application configuration ..."
+            log.warn "No RWT entry points configured. Skipping RWT application configuration ..."
             return
         }
 
@@ -139,7 +136,11 @@ More information coming soon!
             def entryPointConfiguration =  new EntryPointConfiguration()
             entryPointConfiguration.path = path
             entryPointConfiguration.entryPointBeanName = entryPointBeanName
-            entryPointConfiguration.props = values.props as Map
+            entryPointConfiguration.pageTitle = values.pageTitle ?: null
+            entryPointConfiguration.favicon = values.favicon ?: null
+            entryPointConfiguration.themeId = values.themeId ?: null
+            entryPointConfiguration.headHtml = values.headHtml ?: null
+            entryPointConfiguration.bodyHtml = values.bodyHtml ?: null
             return entryPointConfiguration
         }
     }
