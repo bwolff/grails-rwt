@@ -1,1 +1,17 @@
 Configure entry point ...
+
+{code}
+// The RWT configuration block
+rwt {
+
+    // Entry Point configuration block
+    entrypoints {
+        
+        // Configuration of an entry point named 'hello'
+        hello {
+            bean = 'helloEntryPointService'
+            pageTitle = 'Hello RWT!'
+        }
+    }
+}
+{code}

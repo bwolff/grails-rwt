@@ -1,1 +1,54 @@
 Create entry point ...
+
+{code}
+import org.eclipse.jface.viewers.ArrayContentProvider
+import org.eclipse.jface.viewers.LabelProvider
+import org.eclipse.jface.viewers.ListViewer
+import org.eclipse.rap.rwt.lifecycle.IEntryPoint
+import org.eclipse.swt.SWT
+import org.eclipse.swt.events.SelectionAdapter
+import org.eclipse.swt.events.SelectionEvent
+import org.eclipse.swt.layout.GridData
+import org.eclipse.swt.layout.GridLayout
+import org.eclipse.swt.widgets.Button
+import org.eclipse.swt.widgets.Display
+import org.eclipse.swt.widgets.Label
+import org.eclipse.swt.widgets.List
+import org.eclipse.swt.widgets.Shell
+
+class HelloEntryPointService implements IEntryPoint { // "The service needs to implement IEntryPoint"
+
+    def fooService // "Other services will get injected by Grails"
+
+    @Override
+    int createUI() {
+        Display display = new Display()
+        Shell shell = new Shell(display)
+        shell.setSize(500, 400)
+        shell.layout = new GridLayout()
+
+        Label label = new Label(shell, SWT.NONE)
+        label.text = fooService.serviceMethod() // "Call methods of other services"
+
+        // "JFace is available"
+        ListViewer viewer = new ListViewer(shell, SWT.V_SCROLL | SWT.H_SCROLL)
+        viewer.list.layoutData = new GridData(SWT.FILL, SWT.FILL, true, true)
+        viewer.contentProvider = ArrayContentProvider.instance
+        viewer.labelProvider = new LabelProvider()
+        viewer.input = Foo.list() // "Use domain objects and GORM, no DTOs required!"
+
+        Button button = new Button(shell, SWT.PUSH)
+        button.layoutData = new GridData(SWT.BEGINNING, SWT.CENTER, false, false)
+        button.text = "Hello!"
+        button.addSelectionListener(new SelectionAdapter() {
+            @Override
+            public void widgetSelected(SelectionEvent e) {
+                println "Hello RWT!"
+            }
+        })
+
+        shell.open()
+        return 0
+    }
+}
+{code}

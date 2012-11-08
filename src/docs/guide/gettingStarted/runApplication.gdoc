@@ -1,1 +1,9 @@
-Run application...
+The application can be started in a local development setup using the default
+[run-app|http://grails.org/doc/latest/ref/Command%20Line/run-app.html] Grails command from the
+command line in the project root folder:
+
+{code}
+grails run-app
+{code}
+
+After the application started you should be able to access your first RWT example under the following URL: @http://localhost/foo/hello@

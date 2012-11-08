@@ -1,1 +1,12 @@
-Deploy application...
+You can now package your first Grails/RWT application into a WAR file and deploy to the servlet
+of your choice. The [deployment procedure|http://grails.org/doc/latest/guide/deployment.html] is the
+same as for any other Grails application, by simply issuing the following command in the command
+line:
+
+{code}
+grails war
+{code}
+
+The resulting WAR file is created in the @target/@ folder and can now be deployed to e.g. a [Tomcat|http://tomcat.apache.org/]
+container. All necessary jar files for RWT/JFace will be contained and the web.xml is also properly
+set up.

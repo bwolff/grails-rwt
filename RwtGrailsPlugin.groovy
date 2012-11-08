@@ -23,7 +23,7 @@ class RwtGrailsPlugin {
     def description = '''\
 This plugin integrates RWT (standalone), the web-ported Standard Widget Toolkit (SWT), into your
 Grails application. It enables you to build your RWT and JFace powered user interface using Groovy
-and the complete Grails framework stack with all its features and DSL sugar.
+and the complete Grails framework stack with all its features and syntactic DSL sugar.
 '''
 
     // URL to the plugin's documentation
@@ -55,7 +55,7 @@ and the complete Grails framework stack with all its features and DSL sugar.
             return
         }
         
-        // Register the RWT servlet.
+        // Register the RWT servlet as the last servlet.
         def servletElement = xml.'servlet'
         def lastMapping = servletElement[servletElement.size() - 1]
         lastMapping + {
@@ -132,7 +132,7 @@ and the complete Grails framework stack with all its features and DSL sugar.
     private getEntryPointConfigurations(def application) {
         application.config.rwt.entrypoints.collect { name, values ->
             def path = '/' + name
-            def entryPointBeanName = values.bean ?: null // TODO This is an exception!
+            def entryPointBeanName = values.bean ?: null // TODO This would be an error!
             def entryPointConfiguration =  new EntryPointConfiguration()
             entryPointConfiguration.path = path
             entryPointConfiguration.entryPointBeanName = entryPointBeanName

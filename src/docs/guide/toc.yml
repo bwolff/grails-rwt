@@ -13,5 +13,6 @@ configuration:
     title: Configuration
     applicationConfiguration: Application Configuration
     entryPointConfiguration: Entry Point Configuration
+    loggingConfiguration: Logging Configuration
 advancedTopics:
     title: Advanced Topics

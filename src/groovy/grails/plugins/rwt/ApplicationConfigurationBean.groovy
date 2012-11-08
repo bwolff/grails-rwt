@@ -14,7 +14,8 @@ import org.eclipse.rap.rwt.lifecycle.IEntryPoint
 import org.eclipse.rap.rwt.lifecycle.IEntryPointFactory
 
 /**
- * TODO Document...
+ * Configures the RWT application. An instance of this class will be registered as a Spring bean
+ * and injected where needed.
  *
  * @author Benjamin Wolff
  */

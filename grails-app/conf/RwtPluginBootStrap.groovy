@@ -27,9 +27,10 @@ class RwtPluginBootStrap {
 
     def destroy = {
         if (applicationRunner) {
+            log.info "Stopping RWT application destroyed ..."
             applicationRunner.stop();
             applicationRunner = null;
-            log.info "RWT application destroyed."
+            log.info "... RWT application stopped."
         }
     }
 }
