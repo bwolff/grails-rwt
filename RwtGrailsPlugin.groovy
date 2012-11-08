@@ -27,7 +27,7 @@ and the complete Grails framework stack with all its features and syntactic DSL 
 '''
 
     // URL to the plugin's documentation
-    def documentation = "http://grails.org/plugin/rwt"
+    def documentation = "http://bwolff.github.com/grails-rwt/"
 
     // Extra (optional) plugin metadata
 
