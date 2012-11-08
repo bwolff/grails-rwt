@@ -9,3 +9,5 @@ rwt-resources
 stacktrace.log
 eclipse
 .settings
+.classpath
+.project
