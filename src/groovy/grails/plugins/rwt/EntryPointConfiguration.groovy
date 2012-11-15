@@ -31,7 +31,7 @@ class EntryPointConfiguration {
     Map<String, String> getEntryPointProperties() {
         Map<String, String> properties = [:]
 
-        if (pageTitle) { // TODO Would a blank ("") page title be valid??
+        if (pageTitle) {
             properties[WebClient.PAGE_TITLE] = pageTitle
         }
 

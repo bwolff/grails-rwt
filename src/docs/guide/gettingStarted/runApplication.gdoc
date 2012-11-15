@@ -6,4 +6,4 @@ command line in the project root folder:
 grails run-app
 {code}
 
-After the application started you should be able to access your first RWT example under the following URL: @http://localhost/foo/hello@
+After the application started you should be able to access your first Grails/RWT example under the following URL: @http://localhost/foo/hello@

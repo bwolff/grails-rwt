@@ -33,7 +33,6 @@ and the complete Grails framework stack with all its features and syntactic DSL 
 
     // License: one of 'APACHE', 'GPL2', 'GPL3'
     def license = "APACHE"
-//    def license = "EPL1"
 
     // Details of company behind the plugin (if there is one)
 //    def organization = [ name: "My Company", url: "http://www.my-company.com/" ]
@@ -85,7 +84,7 @@ and the complete Grails framework stack with all its features and syntactic DSL 
         // configuration bean.
         def configurations = getEntryPointConfigurations(application)
         if (!configurations) {
-            log.warn "No RWT entry points configured. Skipping RWT application configuration ..."
+            log.warn "No RWT entry points configured. Skipping RWT application configuration."
             return
         }
 

@@ -1,5 +1,5 @@
 The plugin is installed using the default [Grails plugin installation mechanism|http://grails.org/doc/latest/guide/conf.html#pluginDependencies].
-In the @BuildConfig.groovy@ file simply add the following in the plugin dependency section:
+Simply add the following lines to the plugin dependency section in the @BuildConfig.groovy@ file:
 
 {code}
 grails.project.dependency.resolution = {

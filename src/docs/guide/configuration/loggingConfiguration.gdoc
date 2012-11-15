@@ -1,1 +1,13 @@
-Logging configuration...
+The plugin logs some information in the INFO and DEBUG levels. To increase the verbosity of the
+log messages you can enable the debug level for some plugin artifacts. Add the following lines to
+the [log4j section|http://grails.org/doc/latest/guide/conf.html#logging] in your @Config.groovy@ file:
+
+{code}
+log4j = {
+    ...
+    debug 'grails.app.conf.RwtPluginBootStrap'
+    debug 'grails.plugins.rwt'
+    debug 'RwtGrailsPlugin'
+    ...
+}
+{code}

@@ -2,30 +2,38 @@ This plugin integrates the [RAP Widget Toolkit (RWT)|http://wiki.eclipse.org/Wid
 web-based Ajax/JavaScript widget library similar to [SWT|http://www.eclipse.org/swt/] - into your Grails
 application.
 
-RWT is the UI part of the [Rich Ajax Platform (RAP)|http://www.eclipse.org/rap] - a web-ported
-application framework that builds on the powerful
-[Eclipse workbench|http://wiki.eclipse.org/index.php/Rich_Client_Platform]. RWT is provided in
+RWT is the UI part of the [Rich Ajax Platform (RAP)|http://www.eclipse.org/rap] - the web-ported
+[Eclipse RCP|http://wiki.eclipse.org/index.php/Rich_Client_Platform] application platform. RWT is
+provided in
 [standalone|http://eclipse.org/rap/developers-guide/devguide.php?topic=advanced/rwt-standalone.html]
-mode by this plugin, without the full RAP workbench or OSGi. Furthermore, it is also possible to use
-[JFace|http://wiki.eclipse.org/JFace] for building the UIs.
+mode by this plugin, without the full RAP workbench or OSGi. It also enables you to use the
+[JFace API|http://wiki.eclipse.org/JFace] for building your user interfaces.
 
 RWT enables you to create highly interactive, desktop-like Ajax interfaces by only writing
-Java/Groovy code. In contrast to the popular [Google Web Toolkit|https://developers.google.com/web-toolkit/],
+Java/Groovy code. In contrast to the popular [Google Web Toolkit|http://developers.google.com/web-toolkit/] ([Grails plugin|http://grails.org/plugin/gwt]),
 RWT is not compiled to JavaScript, but provides its own set of JavaScript widget which communicate
 transparantly with your server-side code. Since basically everything happens on the server-side
 (besides the rendering in the browser), it is not necessary to use DTOs or other transfer objects
-to send show data on the client. The domain objects can be seamlessly used in the UI (e.g. via
-[DataBinding|http://wiki.eclipse.org/index.php/JFace_Data_Binding]).
+to display the data on the client. The domain objects can be seamlessly used in the UI logic (e.g.
+via [DataBinding|http://wiki.eclipse.org/index.php/JFace_Data_Binding]).
+
+For more information please refer to the documentation of the particular technology.
 
 The following pages will provide you with the necessary information to get started with Grails and
 RWT. Have fun!
 
 h3. RWT Version
 
-The current version of this plugin comes with the [RWT/JFace version 2.0 M2|http://www.eclipse.org/rap/downloads/].
+The current version of this plugin comes with the [RWT/JFace version 2.0 M3|http://www.eclipse.org/rap/noteworthy/2.0/?build=M3].
+
+h3. License
+
+This plugin and its sources are made available under the terms of the [Apache License, Version 2.0|http://www.apache.org/licenses/LICENSE-2.0.html].
+
+The packaged RWT and JFace binary libraries in this plugin are made available under the terms of the [Eclipse Public License, Version 1.0|http://www.eclipse.org/legal/epl-v10.html].
 
 h3. Acknowledgments
 
 I'd like to give big thanks to the developers and the community of [Grails|http://grails.org/] and
 [RAP/RWT|http://www.eclipse.org/rap/] for making these wonderful technologies possible and for
-providing it for free! Keep on the excellent work!
+providing it for free! Keep up the excellent work!
