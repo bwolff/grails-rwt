@@ -21,9 +21,9 @@ class RwtGrailsPlugin {
     def author = "Benjamin Wolff"
     def authorEmail = "benjamin.wolff@cern.ch"
     def description = '''\
-This plugin integrates RWT (standalone), the web-ported Standard Widget Toolkit (SWT), into your
-Grails application. It enables you to build your RWT and JFace powered user interface using Groovy
-and the complete Grails framework stack with all its features and syntactic DSL sugar.
+This plugin integrates RWT - the web-ported Standard Widget Toolkit (SWT) - into your Grails
+application. It enables you to build your RWT and JFace powered user interfaces using Groovy and the
+complete Grails framework stack with all its powerful features and syntactic DSL sugar.
 '''
 
     // URL to the plugin's documentation
