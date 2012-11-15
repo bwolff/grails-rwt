@@ -114,7 +114,15 @@ EntryPoint configuration&#8230;
 
 
 <h2 id="loggingConfiguration">3.3 Logging Configuration</h2>
-Logging configuration&#8230;
+The plugin logs some information in the INFO and DEBUG levels. To increase the verbosity of the
+log messages you can enable the debug level for some plugin artifacts. Add the following lines to
+the <a href="http://grails.org/doc/latest/guide/conf.html#logging" target="blank">log4j section</a> in your <code>Config.groovy</code> file:<p class="paragraph"/><div class="code"><pre>log4j = &#123;
+    &#8230;
+    debug 'grails.app.conf.RwtPluginBootStrap'
+    debug 'grails.plugins.rwt'
+    debug 'RwtGrailsPlugin'
+    &#8230;
+&#125;</pre></div>
 
 
                 <div style="clear:both;margin-top:15px;"></div>
@@ -141,7 +149,7 @@ Logging configuration&#8230;
 </table>
 
 <div id="footer">
-    Bla copyright...
+    
     
 </div>
 
