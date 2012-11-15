@@ -1,7 +1,7 @@
 package grails.plugins.rwt
 
 import org.eclipse.rap.rwt.lifecycle.IEntryPoint
-import org.eclipse.rap.rwt.lifecycle.IEntryPointFactory;
+import org.eclipse.rap.rwt.lifecycle.IEntryPointFactory
 
 /**
  * Simple implementation of an {@link IEntryPointFactory}. A concrete {@link IEntryPoint}
@@ -16,8 +16,7 @@ class EntryPointFactory implements IEntryPointFactory {
 
     IEntryPoint entryPoint
 
-    @Override
-    public IEntryPoint create() {
+    IEntryPoint create() {
         return entryPoint
     }
 }
