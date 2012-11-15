@@ -19,8 +19,8 @@ class RwtPluginBootStrap {
     def init = { servletContext ->
         if (rwtApplicationConfiguration) {
             log.info "Starting RWT application ..."
-            applicationRunner = new ApplicationRunner(rwtApplicationConfiguration, servletContext);
-            applicationRunner.start();
+            applicationRunner = new ApplicationRunner(rwtApplicationConfiguration, servletContext)
+            applicationRunner.start()
             log.info "... RWT application started."
         }
     }
@@ -28,8 +28,8 @@ class RwtPluginBootStrap {
     def destroy = {
         if (applicationRunner) {
             log.info "Stopping RWT application ..."
-            applicationRunner.stop();
-            applicationRunner = null;
+            applicationRunner.stop()
+            applicationRunner = null
             log.info "... RWT application stopped."
         }
     }

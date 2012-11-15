@@ -1,14 +1,9 @@
 target
 target-eclipse
-*.class
 rwt-resources
-/plugins
-/web-app/plugins
-/web-app/WEB-INF/classes
-/tmp
-stacktrace.log
+*.log
 eclipse
 .settings
-.classpath
-.project
 plugin.xml
+*.zip
+web-app

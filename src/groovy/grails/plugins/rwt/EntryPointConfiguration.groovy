@@ -1,9 +1,6 @@
 package grails.plugins.rwt
 
-import java.util.Map;
-
-import org.eclipse.rap.rwt.client.WebClient;
-import org.eclipse.rap.rwt.lifecycle.IEntryPointFactory;
+import org.eclipse.rap.rwt.client.WebClient
 
 /**
  * Simple POGO that encapsulates the configuration for an RWT entry point. A list of these object is
