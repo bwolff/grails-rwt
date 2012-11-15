@@ -1,15 +1,11 @@
 package grails.plugins.rwt
 
-import groovy.util.logging.Commons;
+import groovy.util.logging.Commons
 
-import java.util.List;
-
-import javax.security.auth.login.ConfigurationSpi;
-
-import org.codehaus.groovy.grails.commons.GrailsApplication;
+import org.codehaus.groovy.grails.commons.GrailsApplication
 import org.eclipse.rap.rwt.application.Application
-import org.eclipse.rap.rwt.application.Application.OperationMode;
 import org.eclipse.rap.rwt.application.ApplicationConfiguration
+import org.eclipse.rap.rwt.application.Application.OperationMode
 import org.eclipse.rap.rwt.lifecycle.IEntryPoint
 import org.eclipse.rap.rwt.lifecycle.IEntryPointFactory
 
@@ -26,8 +22,7 @@ class ApplicationConfigurationBean implements ApplicationConfiguration {
     OperationMode operationMode
     List<EntryPointConfiguration> entryPointConfigurations
 
-    @Override
-    public void configure(Application application) {
+    void configure(Application application) {
         application.setOperationMode(operationMode)
         log.debug "RWT operation mode set to: ${operationMode}"
 
