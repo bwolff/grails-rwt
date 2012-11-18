@@ -49,9 +49,9 @@ function addJsClass() {
         
         
     </div>
-    <p>This plugin integrates RWT (standalone), the web-ported Standard Widget Toolkit (SWT), into your
-Grails application. It enables you to build your RWT and JFace powered user interface using Groovy
-and the complete Grails framework stack with all its features and syntactic DSL sugar.
+    <p>This plugin integrates RWT - the web-ported Standard Widget Toolkit (SWT) - into your Grails
+application. It enables you to build your RWT and JFace powered user interfaces using Groovy and the
+complete Grails framework stack with all its powerful features and syntactic DSL sugar.
 </p>
 </div>
 
@@ -110,14 +110,24 @@ transparantly with your server-side code. Since basically everything happens on 
 (besides the rendering in the browser), it is not necessary to use DTOs or other transfer objects
 to display the data on the client. The domain objects can be seamlessly used in the UI logic (e.g.
 via <a href="http://wiki.eclipse.org/index.php/JFace_Data_Binding" target="blank">DataBinding</a>).<p class="paragraph"/>For more information please refer to the documentation of the particular technology.<p class="paragraph"/>The following pages will provide you with the necessary information to get started with Grails and
-RWT. Have fun!<p class="paragraph"/><h3>RWT Version</h3><p class="paragraph"/>The current version of this plugin comes with the <a href="http://www.eclipse.org/rap/noteworthy/2.0/?build=M3" target="blank">RWT/JFace version 2.0 M3</a>.<p class="paragraph"/><h3>License</h3><p class="paragraph"/>This plugin and its sources are made available under the terms of the <a href="http://www.apache.org/licenses/LICENSE-2.0.html" target="blank">Apache License, Version 2.0</a>.<p class="paragraph"/>The packaged RWT and JFace binary libraries in this plugin are made available under the terms of the <a href="http://www.eclipse.org/legal/epl-v10.html" target="blank">Eclipse Public License, Version 1.0</a>.<p class="paragraph"/><h3>Acknowledgments</h3><p class="paragraph"/>I'd like to give big thanks to the developers and the community of <a href="http://grails.org/" target="blank">Grails</a> and
+RWT. Have fun!<p class="paragraph"/><h3>RWT Version</h3><p class="paragraph"/>The current version of this plugin comes with <a href="http://www.eclipse.org/rap/noteworthy/2.0/?build=M3" target="blank">RWT 2.0 M3</a>.<p class="paragraph"/><h3>License</h3><p class="paragraph"/>This plugin and its sources are made available under the terms of the <a href="http://www.apache.org/licenses/LICENSE-2.0.html" target="blank">Apache License, Version 2.0</a>.<p class="paragraph"/>The packaged RWT and JFace binary libraries in this plugin are made available under the terms of the <a href="http://www.eclipse.org/legal/epl-v10.html" target="blank">Eclipse Public License, Version 1.0</a>.<p class="paragraph"/><h3>Acknowledgments</h3><p class="paragraph"/>I'd like to give big thanks to the developers and the community of <a href="http://grails.org/" target="blank">Grails</a> and
 <a href="http://www.eclipse.org/rap/" target="blank">RAP/RWT</a> for making these wonderful technologies possible and for
 providing it for free! Keep up the excellent work!
 
 
 
 <h2 id="knownIssues">1.1 Known/Open Issues</h2>
-Known and open issues&#8230;
+This section sums up a few issues that will be tackled/resolved in upcoming versions of this plugin.
+<ul class="star">
+<li><strong class="bold">Theming &#38; Branding</strong></li>
+<ul class="star">
+<li>Support the RWT custom CSS and theming options.</li>
+</ul>
+<li><strong class="bold">Use Maven for the RWT dependencies</strong></li>
+<ul class="star">
+<li>Unfortunately there is no maven repository available that can server the required RWT dependency jar files. Currently, the required jars are bundled with the plugin. This is no ideal, as it doesn't allow to switch the RWT version. This situation can be improved if the jar files will become available in a public Maven repository.</li>
+</ul></ul><p class="paragraph"/>Please file any issues/requests/ideas in the <a href="http://github.com/bwolff/grails-rwt/issues" target="blank">GitHub issue tracker</a>.
+
 
 
 <h2 id="releaseNotes">1.2 Release Notes</h2>

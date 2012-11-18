@@ -49,9 +49,9 @@ function addJsClass() {
         
         
     </div>
-    <p>This plugin integrates RWT (standalone), the web-ported Standard Widget Toolkit (SWT), into your
-Grails application. It enables you to build your RWT and JFace powered user interface using Groovy
-and the complete Grails framework stack with all its features and syntactic DSL sugar.
+    <p>This plugin integrates RWT - the web-ported Standard Widget Toolkit (SWT) - into your Grails
+application. It enables you to build your RWT and JFace powered user interfaces using Groovy and the
+complete Grails framework stack with all its powerful features and syntactic DSL sugar.
 </p>
 </div>
 
@@ -85,15 +85,12 @@ and the complete Grails framework stack with all its features and syntactic DSL 
                 
 
 <h1 id="advancedTopics">4 Advanced Topics</h1>
-<h3>URL Mapping of Entry Points</h3><p class="paragraph"/>By default RWT entry points are mapped to their name under the applications base URL. If the
+<h3>Custom URL Mapping of Entry Points</h3><p class="paragraph"/>By default RWT entry points are mapped to their name under the applications base URL. If the
 application name would be 'foo' and the entry point name 'hello', the URL would look like this:
 <code>http://server/foo/hello</code><p class="paragraph"/>Sometimes it may be desired to reach the entry point under the base URL or a different URL. This can
 easily be achieved by using the <a href="http://grails.org/doc/latest/guide/theWebLayer.html#urlmappings" target="blank">Grails URL Mappings</a>.
 To map the entry point to the base URL, the following needs to be configured in the <code>UrlMappings.groovy</code>
-file:<p class="paragraph"/><div class="code"><pre>class UrlMappings &#123;<p class="paragraph"/>    <span class="java&#45;keyword">static</span> mappings = &#123;
-        &#8230;
-        <span class="java&#45;quote">"/"</span>(uri: <span class="java&#45;quote">"/hello"</span>)
-        &#8230;
+file:<p class="paragraph"/><div class="code"><pre>class UrlMappings &#123;<p class="paragraph"/>    <span class="java&#45;keyword">static</span> mappings = &#123;<p class="paragraph"/>        <span class="java&#45;quote">"/"</span>(uri: <span class="java&#45;quote">"/hello"</span>)
     &#125;
 &#125;</pre></div><p class="paragraph"/>Now the RWT application is reachable via: <code>http://server/foo</code>
 

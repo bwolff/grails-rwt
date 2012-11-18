@@ -49,9 +49,9 @@ function addJsClass() {
         
         
     </div>
-    <p>This plugin integrates RWT (standalone), the web-ported Standard Widget Toolkit (SWT), into your
-Grails application. It enables you to build your RWT and JFace powered user interface using Groovy
-and the complete Grails framework stack with all its features and syntactic DSL sugar.
+    <p>This plugin integrates RWT - the web-ported Standard Widget Toolkit (SWT) - into your Grails
+application. It enables you to build your RWT and JFace powered user interfaces using Groovy and the
+complete Grails framework stack with all its powerful features and syntactic DSL sugar.
 </p>
 </div>
 
@@ -101,27 +101,49 @@ and the complete Grails framework stack with all its features and syntactic DSL 
                 
 
 <h1 id="configuration">3 Configuration</h1>
-Configuration&#8230;
+The RWT application goes into a special configuration block in the <code>Config.groovy</code> file.<p class="paragraph"/><div class="code"><pre>rwt &#123;
+    // RWT configuration goes here.
+&#125;</pre></div><p class="paragraph"/>There are two aspects that can be configured, the global RWT settings, and the settings
+specific to the single entry points.
 
 
 
 <h2 id="applicationConfiguration">3.1 Application Configuration</h2>
-Application configuration&#8230;
+Options to configure global aspects of the RWT application will come in future versions of this plugin.
 
 
 <h2 id="entryPointConfiguration">3.2 Entry Point Configuration</h2>
-EntryPoint configuration&#8230;
+An RWT application can consist of one or more entry points. Each entry point is configured as a
+configuration block within the <code>rwt</code> section.<p class="paragraph"/><div class="code"><pre>rwt &#123;
+    hello &#123;
+        bean = 'entryPointBean'
+        pageTitle = 'Hello RWT World!'
+    &#125;
+&#125;</pre></div><p class="paragraph"/>The given example configures an entry point with the name <code>hello</code>. By default, this entry point will
+be mapped to the relative URL path '/hello'. The following settings need to be provided for an
+entry point configuration:
+<ul class="star">
+<li><strong class="bold">bean</strong> - The name (string) of the bean that implements the IEntryPoint interface (mandatory).</li>
+<li><strong class="bold">pageTitle</strong> - The title (string) that will be displayed as the browser's title (optional).</li>
+</ul><p class="paragraph"/>A Grails-RWT application can contain an arbitrary number of entry points, which usually refer to
+different entry point beans.<p class="paragraph"/><div class="code"><pre>rwt &#123;
+    hello &#123;
+        bean = 'helloEntryPoint'
+        pageTitle = 'Hello RWT World!'
+    &#125;<p class="paragraph"/>    helloAgain &#123;
+        bean = 'helloAgainEntryPoint'
+        pageTitle = 'Hello again, RWT World!'
+    &#125;
+&#125;</pre></div><p class="paragraph"/>In this example there will be two entry points accessible under '/hello' and '/helloAgain'.
+
 
 
 <h2 id="loggingConfiguration">3.3 Logging Configuration</h2>
 The plugin logs some information in the INFO and DEBUG levels. To increase the verbosity of the
 log messages you can enable the debug level for some plugin artifacts. Add the following lines to
-the <a href="http://grails.org/doc/latest/guide/conf.html#logging" target="blank">log4j section</a> in your <code>Config.groovy</code> file:<p class="paragraph"/><div class="code"><pre>log4j = &#123;
-    &#8230;
-    debug 'grails.app.conf.RwtPluginBootStrap'
+the <a href="http://grails.org/doc/latest/guide/conf.html#logging" target="blank">log4j section</a> in your <code>Config.groovy</code> file:<p class="paragraph"/><div class="code"><pre>log4j = &#123;<p class="paragraph"/>    debug 'grails.app.conf.RwtPluginBootStrap'
     debug 'grails.plugins.rwt'
     debug 'RwtGrailsPlugin'
-    &#8230;
 &#125;</pre></div>
 
 

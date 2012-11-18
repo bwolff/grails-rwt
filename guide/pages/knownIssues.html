@@ -49,9 +49,9 @@ function addJsClass() {
         
         
     </div>
-    <p>This plugin integrates RWT (standalone), the web-ported Standard Widget Toolkit (SWT), into your
-Grails application. It enables you to build your RWT and JFace powered user interface using Groovy
-and the complete Grails framework stack with all its features and syntactic DSL sugar.
+    <p>This plugin integrates RWT - the web-ported Standard Widget Toolkit (SWT) - into your Grails
+application. It enables you to build your RWT and JFace powered user interfaces using Groovy and the
+complete Grails framework stack with all its powerful features and syntactic DSL sugar.
 </p>
 </div>
 
@@ -85,7 +85,17 @@ and the complete Grails framework stack with all its features and syntactic DSL 
                 
 
 <h2 id="knownIssues">1.1 Known/Open Issues</h2>
-Known and open issues&#8230;
+This section sums up a few issues that will be tackled/resolved in upcoming versions of this plugin.
+<ul class="star">
+<li><strong class="bold">Theming &#38; Branding</strong></li>
+<ul class="star">
+<li>Support the RWT custom CSS and theming options.</li>
+</ul>
+<li><strong class="bold">Use Maven for the RWT dependencies</strong></li>
+<ul class="star">
+<li>Unfortunately there is no maven repository available that can server the required RWT dependency jar files. Currently, the required jars are bundled with the plugin. This is no ideal, as it doesn't allow to switch the RWT version. This situation can be improved if the jar files will become available in a public Maven repository.</li>
+</ul></ul><p class="paragraph"/>Please file any issues/requests/ideas in the <a href="http://github.com/bwolff/grails-rwt/issues" target="blank">GitHub issue tracker</a>.
+
 
 
                 <div style="clear:both;margin-top:15px;"></div>

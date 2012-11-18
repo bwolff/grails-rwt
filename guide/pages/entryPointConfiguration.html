@@ -49,9 +49,9 @@ function addJsClass() {
         
         
     </div>
-    <p>This plugin integrates RWT (standalone), the web-ported Standard Widget Toolkit (SWT), into your
-Grails application. It enables you to build your RWT and JFace powered user interface using Groovy
-and the complete Grails framework stack with all its features and syntactic DSL sugar.
+    <p>This plugin integrates RWT - the web-ported Standard Widget Toolkit (SWT) - into your Grails
+application. It enables you to build your RWT and JFace powered user interfaces using Groovy and the
+complete Grails framework stack with all its powerful features and syntactic DSL sugar.
 </p>
 </div>
 
@@ -87,7 +87,29 @@ and the complete Grails framework stack with all its features and syntactic DSL 
                 
 
 <h2 id="entryPointConfiguration">3.2 Entry Point Configuration</h2>
-EntryPoint configuration&#8230;
+An RWT application can consist of one or more entry points. Each entry point is configured as a
+configuration block within the <code>rwt</code> section.<p class="paragraph"/><div class="code"><pre>rwt &#123;
+    hello &#123;
+        bean = 'entryPointBean'
+        pageTitle = 'Hello RWT World!'
+    &#125;
+&#125;</pre></div><p class="paragraph"/>The given example configures an entry point with the name <code>hello</code>. By default, this entry point will
+be mapped to the relative URL path '/hello'. The following settings need to be provided for an
+entry point configuration:
+<ul class="star">
+<li><strong class="bold">bean</strong> - The name (string) of the bean that implements the IEntryPoint interface (mandatory).</li>
+<li><strong class="bold">pageTitle</strong> - The title (string) that will be displayed as the browser's title (optional).</li>
+</ul><p class="paragraph"/>A Grails-RWT application can contain an arbitrary number of entry points, which usually refer to
+different entry point beans.<p class="paragraph"/><div class="code"><pre>rwt &#123;
+    hello &#123;
+        bean = 'helloEntryPoint'
+        pageTitle = 'Hello RWT World!'
+    &#125;<p class="paragraph"/>    helloAgain &#123;
+        bean = 'helloAgainEntryPoint'
+        pageTitle = 'Hello again, RWT World!'
+    &#125;
+&#125;</pre></div><p class="paragraph"/>In this example there will be two entry points accessible under '/hello' and '/helloAgain'.
+
 
 
                 <div style="clear:both;margin-top:15px;"></div>
