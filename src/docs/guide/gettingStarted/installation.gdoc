@@ -1,12 +1,15 @@
 The plugin is installed using the default [Grails plugin installation mechanism|http://grails.org/doc/latest/guide/conf.html#pluginDependencies].
-Simply add the following lines to the plugin dependency section in the @BuildConfig.groovy@ file:
+Simply add/modify the following lines to the plugin dependency section in the @BuildConfig.groovy@ file:
 
 {code}
 grails.project.dependency.resolution = {
-    ...
+
     plugins {
         compile ':rwt:0.1'
     }
-    ...
 }
 {code}
+
+The plugin will be installed automatically on the next invocation of a Grails command. Your IDE
+(e.g. [STS/GGTS|http://grails.org/products/ggts]) should also pick up the new installed plugin and should make the contained jar
+libraries available in your Grails project.

@@ -1,6 +1,18 @@
-Create entry point ...
+The first step is to create a so called RWT _entry point_ class. An instance of this class needs to
+be registered as a Spring bean to be picked up by the RWT configuration. The
+suggested approach is to use a Grails [service|http://grails.org/doc/latest/guide/services.html]
+for that. Being a Grails artifact, a service is registered as a Spring bean by default
+and other dependencies and functionalities are added/injected out of the box.
+
+The following code snippet shows an example entry point service implementation
+(in the @grails-app/services@ sub-folder). To demonstrate the usage,
+another service (@FooService@) and a domain class (@Foo@) are used. They don't do anything useful and
+their code can be obtained from the example application, as described above. The comments in the code
+snippet highlight interesting points.
 
 {code}
+package grails.rwt.example
+
 import org.eclipse.jface.viewers.ArrayContentProvider
 import org.eclipse.jface.viewers.LabelProvider
 import org.eclipse.jface.viewers.ListViewer
@@ -16,6 +28,8 @@ import org.eclipse.swt.widgets.Label
 import org.eclipse.swt.widgets.List
 import org.eclipse.swt.widgets.Shell
 
+// "Note the use of Groovy syntax"
+
 class HelloEntryPointService implements IEntryPoint { // "The service needs to implement IEntryPoint"
 
     def fooService // "Other services will get injected by Grails"
@@ -26,24 +40,27 @@ class HelloEntryPointService implements IEntryPoint { // "The service needs to i
         Shell shell = new Shell(display)
         shell.setSize(500, 400)
         shell.layout = new GridLayout()
+        shell.setText("Hello RWT!")
 
-        Label label = new Label(shell, SWT.NONE)
-        label.text = fooService.serviceMethod() // "Call methods of other services"
+        final Label label = new Label(shell, SWT.NONE)
+        label.layoutData = new GridData(SWT.FILL, SWT.CENTER, true, false)
 
         // "JFace is available"
         ListViewer viewer = new ListViewer(shell, SWT.V_SCROLL | SWT.H_SCROLL)
         viewer.list.layoutData = new GridData(SWT.FILL, SWT.FILL, true, true)
         viewer.contentProvider = ArrayContentProvider.instance
         viewer.labelProvider = new LabelProvider()
-        viewer.input = Foo.list() // "Use domain objects and GORM, no DTOs required!"
+        viewer.input = Foo.list() // "Use domain objects and GORM directly, no DTOs required!"
 
         Button button = new Button(shell, SWT.PUSH)
         button.layoutData = new GridData(SWT.BEGINNING, SWT.CENTER, false, false)
-        button.text = "Hello!"
+        button.text = "Click me!"
         button.addSelectionListener(new SelectionAdapter() {
+            Integer num = 0
+
             @Override
             public void widgetSelected(SelectionEvent e) {
-                println "Hello RWT!"
+                label.text = fooService.serviceMethod(num++) // "Call methods of other services"
             }
         })
 
@@ -52,3 +69,11 @@ class HelloEntryPointService implements IEntryPoint { // "The service needs to i
     }
 }
 {code}
+
+According to the Grails conventions, a Spring bean called @helloEntryPointService@ will be registered
+automatically on application start. The next step is to configure our newly create entry point.
+
+{note}
+The given code snippet is just a very simple example to demonstrate the usage. You should develop
+your application using a cleaner separation of concerns, i.e. by employing the MVC or MVP pattern.
+{note}

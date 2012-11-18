@@ -1,1 +1,10 @@
-Configuration...
+The RWT application goes into a special configuration block in the @Config.groovy@ file.
+
+{code}
+rwt {
+    // RWT configuration goes here.
+}
+{code}
+
+There are two aspects that can be configured, the global RWT settings, and the settings
+specific to the single entry points.

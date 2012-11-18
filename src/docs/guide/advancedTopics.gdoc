@@ -1,4 +1,4 @@
-h3. URL Mapping of Entry Points
+h3. Custom URL Mapping of Entry Points
 
 By default RWT entry points are mapped to their name under the applications base URL. If the
 application name would be 'foo' and the entry point name 'hello', the URL would look like this:
@@ -13,9 +13,8 @@ file:
 class UrlMappings {
 
     static mappings = {
-        ...
+
         "/"(uri: "/hello")
-        ...
     }
 }
 {code}

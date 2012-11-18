@@ -1,1 +1,37 @@
-EntryPoint configuration...
+An RWT application can consist of one or more entry points. Each entry point is configured as a
+configuration block within the @rwt@ section.
+
+{code}
+rwt {
+    hello {
+        bean = 'entryPointBean'
+        pageTitle = 'Hello RWT World!'
+    }
+}
+{code}
+
+The given example configures an entry point with the name @hello@. By default, this entry point will
+be mapped to the relative URL path '/hello'. The following settings need to be provided for an
+entry point configuration:
+
+* *bean* - The name (string) of the bean that implements the IEntryPoint interface (mandatory).
+* *pageTitle* - The title (string) that will be displayed as the browser's title (optional).
+
+A Grails-RWT application can contain an arbitrary number of entry points, which usually refer to
+different entry point beans.
+
+{code}
+rwt {
+    hello {
+        bean = 'helloEntryPoint'
+        pageTitle = 'Hello RWT World!'
+    }
+    
+    helloAgain {
+        bean = 'helloAgainEntryPoint'
+        pageTitle = 'Hello again, RWT World!'
+    }
+}
+{code}
+
+In this example there will be two entry points accessible under '/hello' and '/helloAgain'.

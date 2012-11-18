@@ -1,1 +1,8 @@
-Known and open issues...
+This section sums up a few issues that will be tackled/resolved in upcoming versions of this plugin.
+
+* *Theming & Branding*
+** Support the RWT custom CSS and theming options.
+* *Use Maven for the RWT dependencies*
+** Unfortunately there is no maven repository available that can server the required RWT dependency jar files. Currently, the required jars are bundled with the plugin. This is no ideal, as it doesn't allow to switch the RWT version. This situation can be improved if the jar files will become available in a public Maven repository.
+
+Please file any issues/requests/ideas in the [GitHub issue tracker|http://github.com/bwolff/grails-rwt/issues].

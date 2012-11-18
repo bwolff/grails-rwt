@@ -4,10 +4,9 @@ the [log4j section|http://grails.org/doc/latest/guide/conf.html#logging] in your
 
 {code}
 log4j = {
-    ...
+
     debug 'grails.app.conf.RwtPluginBootStrap'
     debug 'grails.plugins.rwt'
     debug 'RwtGrailsPlugin'
-    ...
 }
 {code}

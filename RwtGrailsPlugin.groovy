@@ -15,7 +15,6 @@ complete Grails framework stack with all its powerful features and syntactic DSL
 '''
 
     def documentation = "http://bwolff.github.com/grails-rwt/"
-
     def license = "APACHE"
     def issueManagement = [ system: "github", url: "https://github.com/bwolff/grails-rwt/issues" ]
     def scm = [ url: "https://github.com/bwolff/grails-rwt/" ]
