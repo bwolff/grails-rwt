@@ -110,7 +110,7 @@ snippet highlight interesting points.<p class="paragraph"/><div class="code"><pr
 <span class="java&#45;keyword">import</span> org.eclipse.swt.widgets.List
 <span class="java&#45;keyword">import</span> org.eclipse.swt.widgets.Shell<p class="paragraph"/>// <span class="java&#45;quote">"Note the use of Groovy syntax"</span><p class="paragraph"/>class HelloEntryPointService <span class="java&#45;keyword">implements</span> IEntryPoint &#123; // <span class="java&#45;quote">"The service needs to implement IEntryPoint"</span><p class="paragraph"/>    def fooService // <span class="java&#45;quote">"Other services will get injected by Grails"</span><p class="paragraph"/>    @Override
     <span class="java&#45;object">int</span> createUI() &#123;
-        Display display = <span class="java&#45;keyword">new</span> Display()
+        log.info(<span class="java&#45;quote">"Creating RWT UI ..."</span>) // <span class="java&#45;quote">"Implicit logger object"</span><p class="paragraph"/>        Display display = <span class="java&#45;keyword">new</span> Display()
         Shell shell = <span class="java&#45;keyword">new</span> Shell(display)
         shell.setSize(500, 400)
         shell.layout = <span class="java&#45;keyword">new</span> GridLayout()
@@ -132,7 +132,7 @@ snippet highlight interesting points.<p class="paragraph"/><div class="code"><pr
         <span class="java&#45;keyword">return</span> 0
     &#125;
 &#125;</pre></div><p class="paragraph"/>According to the Grails conventions, a Spring bean called <code>helloEntryPointService</code> will be registered
-automatically on application start. The next step is to configure our newly create entry point.<p class="paragraph"/><blockquote class="note">
+automatically on application start. The next step is to configure our newly created entry point.<p class="paragraph"/><blockquote class="note">
 The given code snippet is just a very simple example to demonstrate the usage. You should develop
 your application using a cleaner separation of concerns, i.e. by employing the MVC or MVP pattern.
 </blockquote>

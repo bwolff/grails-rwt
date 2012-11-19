@@ -101,7 +101,7 @@ complete Grails framework stack with all its powerful features and syntactic DSL
                 
 
 <h1 id="configuration">3 Configuration</h1>
-The RWT application goes into a special configuration block in the <code>Config.groovy</code> file.<p class="paragraph"/><div class="code"><pre>rwt &#123;
+The RWT configuration goes into a special block in the <code>grails-app/conf/Config.groovy</code> file.<p class="paragraph"/><div class="code"><pre>rwt &#123;
     // RWT configuration goes here.
 &#125;</pre></div><p class="paragraph"/>There are two aspects that can be configured, the global RWT settings, and the settings
 specific to the single entry points.
@@ -141,7 +141,8 @@ different entry point beans.<p class="paragraph"/><div class="code"><pre>rwt &#1
 <h2 id="loggingConfiguration">3.3 Logging Configuration</h2>
 The plugin logs some information in the INFO and DEBUG levels. To increase the verbosity of the
 log messages you can enable the debug level for some plugin artifacts. Add the following lines to
-the <a href="http://grails.org/doc/latest/guide/conf.html#logging" target="blank">log4j section</a> in your <code>Config.groovy</code> file:<p class="paragraph"/><div class="code"><pre>log4j = &#123;<p class="paragraph"/>    debug 'grails.app.conf.RwtPluginBootStrap'
+the <a href="http://grails.org/doc/latest/guide/conf.html#logging" target="blank">log4j section</a> in your <code>Config.groovy</code> file:<p class="paragraph"/><div class="code"><pre>log4j = &#123;
+    // Other logging configurations<p class="paragraph"/>    debug 'grails.app.conf.RwtPluginBootStrap'
     debug 'grails.plugins.rwt'
     debug 'RwtGrailsPlugin'
 &#125;</pre></div>

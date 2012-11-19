@@ -113,16 +113,17 @@ and artifacts like <a href="http://grails.org/doc/latest/guide/GORM.html#quickSt
 <a href="http://grails.org/doc/latest/guide/services.html" target="blank">services</a>.<p class="paragraph"/>The RWT setup process is based on the <a href="http://eclipse.org/rap/developers-guide/devguide.php?topic=advanced/rwt-standalone.html" target="blank">standalone guide</a>.
 However, the Grails-RWT plugin does most of the setup for you, as you will see in this guide.<p class="paragraph"/>Start with creating an example Grails application and then follow the instructions below. The next
 sections assume that the applications is called <code>grails-rwt-example</code>. Replace the occurences in the example
-URLs with the actual name of your example application.<p class="paragraph"/><h3>Example Code</h3><p class="paragraph"/>There is an example project available on GitHub that can be used as a kickstart. It contains the
-example code shown in this guide and is properly configured to get started immediately.<p class="paragraph"/><div class="code"><pre>git clone https://github.com/bwolff/grails&#45;rwt&#45;example</pre></div><p class="paragraph"/>After you checked out the project you can inspect the code and start the application as described
+URLs with the actual name of your example application.<p class="paragraph"/><h3>Example Code</h3><p class="paragraph"/>There is an example project <a href="http://github.com/bwolff/grails-rwt-example" target="blank">available on GitHub</a> that
+can be used as a kickstart. It contains the example code shown in this guide and is properly
+configured to get started immediately.<p class="paragraph"/><div class="code"><pre>git clone https://github.com/bwolff/grails&#45;rwt&#45;example</pre></div><p class="paragraph"/>After you checked out the project you can inspect the code and start the application as described
 in the <a href="../guide/single.html#runApplication" class="guide">Running the Application</a> section below.
 
 
 
 <h2 id="installation">2.1 Installation</h2>
 The plugin is installed using the default <a href="http://grails.org/doc/latest/guide/conf.html#pluginDependencies" target="blank">Grails plugin installation mechanism</a>.
-Simply add/modify the following lines to the plugin dependency section in the <code>BuildConfig.groovy</code> file:<p class="paragraph"/><div class="code"><pre>grails.project.dependency.resolution = &#123;<p class="paragraph"/>    plugins &#123;
-        compile ':rwt:0.1'
+Simply add/modify the following lines to the plugin dependency section in the <code>grails-app/conf/BuildConfig.groovy</code> file:<p class="paragraph"/><div class="code"><pre>grails.project.dependency.resolution = &#123;<p class="paragraph"/>    plugins &#123;
+        // Other plugin dependencies<p class="paragraph"/>        compile ':rwt:0.1'
     &#125;
 &#125;</pre></div><p class="paragraph"/>The plugin will be installed automatically on the next invocation of a Grails command. Your IDE
 (e.g. <a href="http://grails.org/products/ggts" target="blank">STS/GGTS</a>) should also pick up the new installed plugin and should make the contained jar
@@ -153,7 +154,7 @@ snippet highlight interesting points.<p class="paragraph"/><div class="code"><pr
 <span class="java&#45;keyword">import</span> org.eclipse.swt.widgets.List
 <span class="java&#45;keyword">import</span> org.eclipse.swt.widgets.Shell<p class="paragraph"/>// <span class="java&#45;quote">"Note the use of Groovy syntax"</span><p class="paragraph"/>class HelloEntryPointService <span class="java&#45;keyword">implements</span> IEntryPoint &#123; // <span class="java&#45;quote">"The service needs to implement IEntryPoint"</span><p class="paragraph"/>    def fooService // <span class="java&#45;quote">"Other services will get injected by Grails"</span><p class="paragraph"/>    @Override
     <span class="java&#45;object">int</span> createUI() &#123;
-        Display display = <span class="java&#45;keyword">new</span> Display()
+        log.info(<span class="java&#45;quote">"Creating RWT UI ..."</span>) // <span class="java&#45;quote">"Implicit logger object"</span><p class="paragraph"/>        Display display = <span class="java&#45;keyword">new</span> Display()
         Shell shell = <span class="java&#45;keyword">new</span> Shell(display)
         shell.setSize(500, 400)
         shell.layout = <span class="java&#45;keyword">new</span> GridLayout()
@@ -175,7 +176,7 @@ snippet highlight interesting points.<p class="paragraph"/><div class="code"><pr
         <span class="java&#45;keyword">return</span> 0
     &#125;
 &#125;</pre></div><p class="paragraph"/>According to the Grails conventions, a Spring bean called <code>helloEntryPointService</code> will be registered
-automatically on application start. The next step is to configure our newly create entry point.<p class="paragraph"/><blockquote class="note">
+automatically on application start. The next step is to configure our newly created entry point.<p class="paragraph"/><blockquote class="note">
 The given code snippet is just a very simple example to demonstrate the usage. You should develop
 your application using a cleaner separation of concerns, i.e. by employing the MVC or MVP pattern.
 </blockquote>
@@ -184,7 +185,7 @@ your application using a cleaner separation of concerns, i.e. by employing the M
 <h2 id="configureEntryPoint">2.3 Configuring the Entry Point</h2>
 The only thing that is missing now is the configuration of our new RWT entry point. This is done
 in an own <a href="http://grails.org/doc/latest/guide/conf.html#config" target="blank">configuration</a> block in the
-<code>Config.groovy</code> file.<p class="paragraph"/><div class="code"><pre>// RWT configuration
+<code>grails-app/conf/Config.groovy</code> file.<p class="paragraph"/><div class="code"><pre>// RWT configuration
 rwt &#123;<p class="paragraph"/>    // Entry points configuration
     entrypoints &#123;<p class="paragraph"/>        // Configuration of an entry point named 'hello', the relative URL path will be '/hello'.
         hello &#123;

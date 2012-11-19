@@ -89,8 +89,9 @@ complete Grails framework stack with all its powerful features and syntactic DSL
 application name would be 'foo' and the entry point name 'hello', the URL would look like this:
 <code>http://server/foo/hello</code><p class="paragraph"/>Sometimes it may be desired to reach the entry point under the base URL or a different URL. This can
 easily be achieved by using the <a href="http://grails.org/doc/latest/guide/theWebLayer.html#urlmappings" target="blank">Grails URL Mappings</a>.
-To map the entry point to the base URL, the following needs to be configured in the <code>UrlMappings.groovy</code>
-file:<p class="paragraph"/><div class="code"><pre>class UrlMappings &#123;<p class="paragraph"/>    <span class="java&#45;keyword">static</span> mappings = &#123;<p class="paragraph"/>        <span class="java&#45;quote">"/"</span>(uri: <span class="java&#45;quote">"/hello"</span>)
+To map the entry point to the base URL, the following needs to be configured in the <code>grails-app/conf/UrlMappings.groovy</code>
+file:<p class="paragraph"/><div class="code"><pre>class UrlMappings &#123;<p class="paragraph"/>    <span class="java&#45;keyword">static</span> mappings = &#123;
+        // Other mapping configurations<p class="paragraph"/>        <span class="java&#45;quote">"/"</span>(uri: <span class="java&#45;quote">"/hello"</span>)
     &#125;
 &#125;</pre></div><p class="paragraph"/>Now the RWT application is reachable via: <code>http://server/foo</code>
 

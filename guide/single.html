@@ -105,19 +105,20 @@ complete Grails framework stack with all its powerful features and syntactic DSL
 <h1 id="introduction">1 Introduction</h1>
 This plugin integrates the <a href="http://wiki.eclipse.org/WidgetToolkit" target="blank">RAP Widget Toolkit (RWT)</a> - a
 web-based Ajax/JavaScript widget library similar to <a href="http://www.eclipse.org/swt/" target="blank">SWT</a> - into your Grails
-application.<p class="paragraph"/>RWT is the UI part of the <a href="http://www.eclipse.org/rap" target="blank">Rich Ajax Platform (RAP)</a> - the web-ported
-<a href="http://wiki.eclipse.org/index.php/Rich_Client_Platform" target="blank">Eclipse RCP</a> application platform. RWT is
-provided in
+application.<p class="paragraph"/>RWT is the web UI part of the <a href="http://www.eclipse.org/rap" target="blank">Remote Application Platform (RAP)</a> - an
+application framework based on the <a href="http://wiki.eclipse.org/Platform" target="blank">Eclipse platform</a>.
+RWT is provided in
 <a href="http://eclipse.org/rap/developers-guide/devguide.php?topic=advanced/rwt-standalone.html" target="blank">standalone</a>
-mode by this plugin, without the full RAP workbench or OSGi. It also enables you to use the
-<a href="http://wiki.eclipse.org/JFace" target="blank">JFace API</a> for building your user interfaces.<p class="paragraph"/>RWT enables you to create highly interactive, desktop-like Ajax interfaces by only writing
+mode by this plugin, without the full RAP workbench or OSGi. Besides the SWT API, you can use the
+<a href="http://wiki.eclipse.org/JFace" target="blank">JFace API</a> to build your user interfaces.<p class="paragraph"/>RWT enables you to create highly interactive, desktop-like Ajax interfaces by only writing
 Java/Groovy code. In contrast to the popular <a href="http://developers.google.com/web-toolkit/" target="blank">Google Web Toolkit</a> (<a href="http://grails.org/plugin/gwt" target="blank">Grails plugin</a>),
 RWT is not compiled to JavaScript, but provides its own set of JavaScript widget which communicate
 transparantly with your server-side code. Since basically everything happens on the server-side
 (besides the rendering in the browser), it is not necessary to use DTOs or other transfer objects
 to display the data on the client. The domain objects can be seamlessly used in the UI logic (e.g.
 via <a href="http://wiki.eclipse.org/index.php/JFace_Data_Binding" target="blank">DataBinding</a>).<p class="paragraph"/>For more information please refer to the documentation of the particular technology.<p class="paragraph"/>The following pages will provide you with the necessary information to get started with Grails and
-RWT. Have fun!<p class="paragraph"/><h3>RWT Version</h3><p class="paragraph"/>The current version of this plugin comes with <a href="http://www.eclipse.org/rap/noteworthy/2.0/?build=M3" target="blank">RWT 2.0 M3</a>.<p class="paragraph"/><h3>License</h3><p class="paragraph"/>This plugin and its sources are made available under the terms of the <a href="http://www.apache.org/licenses/LICENSE-2.0.html" target="blank">Apache License, Version 2.0</a>.<p class="paragraph"/>The packaged RWT and JFace binary libraries in this plugin are made available under the terms of the <a href="http://www.eclipse.org/legal/epl-v10.html" target="blank">Eclipse Public License, Version 1.0</a>.<p class="paragraph"/><h3>Acknowledgments</h3><p class="paragraph"/>I'd like to give big thanks to the developers and the community of <a href="http://grails.org/" target="blank">Grails</a> and
+RWT. Have fun!<p class="paragraph"/><h3>Grails &#38; RWT Version</h3><p class="paragraph"/>The plugin requires at least <a href="http://grails.org/Download" target="blank">Grails 2.0</a> to be used. The current version
+of this plugin ships with <a href="http://www.eclipse.org/rap/noteworthy/2.0/?build=M3" target="blank">RWT 2.0 M3</a>.<p class="paragraph"/><h3>License</h3><p class="paragraph"/>This plugin and its sources are made available under the terms of the <a href="http://www.apache.org/licenses/LICENSE-2.0.html" target="blank">Apache License, Version 2.0</a>.<p class="paragraph"/>The packaged RWT and JFace binary libraries in this plugin are made available under the terms of the <a href="http://www.eclipse.org/legal/epl-v10.html" target="blank">Eclipse Public License, Version 1.0</a>.<p class="paragraph"/><h3>Acknowledgments</h3><p class="paragraph"/>I'd like to give big thanks to the developers and the community of <a href="http://grails.org/" target="blank">Grails</a> and
 <a href="http://www.eclipse.org/rap/" target="blank">RAP/RWT</a> for making these wonderful technologies possible and for
 providing it for free! Keep up the excellent work!
 
@@ -129,6 +130,10 @@ This section sums up a few issues that will be tackled/resolved in upcoming vers
 <li><strong class="bold">Theming &#38; Branding</strong></li>
 <ul class="star">
 <li>Support the RWT custom CSS and theming options.</li>
+</ul>
+<li><strong class="bold">Configuration</strong></li>
+<ul class="star">
+<li>Allow to configure more aspects of RWT. Allow simple addition of resources etc.</li>
 </ul>
 <li><strong class="bold">Use Maven for the RWT dependencies</strong></li>
 <ul class="star">
@@ -152,16 +157,17 @@ and artifacts like <a href="http://grails.org/doc/latest/guide/GORM.html#quickSt
 <a href="http://grails.org/doc/latest/guide/services.html" target="blank">services</a>.<p class="paragraph"/>The RWT setup process is based on the <a href="http://eclipse.org/rap/developers-guide/devguide.php?topic=advanced/rwt-standalone.html" target="blank">standalone guide</a>.
 However, the Grails-RWT plugin does most of the setup for you, as you will see in this guide.<p class="paragraph"/>Start with creating an example Grails application and then follow the instructions below. The next
 sections assume that the applications is called <code>grails-rwt-example</code>. Replace the occurences in the example
-URLs with the actual name of your example application.<p class="paragraph"/><h3>Example Code</h3><p class="paragraph"/>There is an example project available on GitHub that can be used as a kickstart. It contains the
-example code shown in this guide and is properly configured to get started immediately.<p class="paragraph"/><div class="code"><pre>git clone https://github.com/bwolff/grails&#45;rwt&#45;example</pre></div><p class="paragraph"/>After you checked out the project you can inspect the code and start the application as described
+URLs with the actual name of your example application.<p class="paragraph"/><h3>Example Code</h3><p class="paragraph"/>There is an example project <a href="http://github.com/bwolff/grails-rwt-example" target="blank">available on GitHub</a> that
+can be used as a kickstart. It contains the example code shown in this guide and is properly
+configured to get started immediately.<p class="paragraph"/><div class="code"><pre>git clone https://github.com/bwolff/grails&#45;rwt&#45;example</pre></div><p class="paragraph"/>After you checked out the project you can inspect the code and start the application as described
 in the <a href="../guide/single.html#runApplication" class="guide">Running the Application</a> section below.
 
 
 
 <h2 id="installation">2.1 Installation</h2>
 The plugin is installed using the default <a href="http://grails.org/doc/latest/guide/conf.html#pluginDependencies" target="blank">Grails plugin installation mechanism</a>.
-Simply add/modify the following lines to the plugin dependency section in the <code>BuildConfig.groovy</code> file:<p class="paragraph"/><div class="code"><pre>grails.project.dependency.resolution = &#123;<p class="paragraph"/>    plugins &#123;
-        compile ':rwt:0.1'
+Simply add/modify the following lines to the plugin dependency section in the <code>grails-app/conf/BuildConfig.groovy</code> file:<p class="paragraph"/><div class="code"><pre>grails.project.dependency.resolution = &#123;<p class="paragraph"/>    plugins &#123;
+        // Other plugin dependencies<p class="paragraph"/>        compile ':rwt:0.1'
     &#125;
 &#125;</pre></div><p class="paragraph"/>The plugin will be installed automatically on the next invocation of a Grails command. Your IDE
 (e.g. <a href="http://grails.org/products/ggts" target="blank">STS/GGTS</a>) should also pick up the new installed plugin and should make the contained jar
@@ -192,7 +198,7 @@ snippet highlight interesting points.<p class="paragraph"/><div class="code"><pr
 <span class="java&#45;keyword">import</span> org.eclipse.swt.widgets.List
 <span class="java&#45;keyword">import</span> org.eclipse.swt.widgets.Shell<p class="paragraph"/>// <span class="java&#45;quote">"Note the use of Groovy syntax"</span><p class="paragraph"/>class HelloEntryPointService <span class="java&#45;keyword">implements</span> IEntryPoint &#123; // <span class="java&#45;quote">"The service needs to implement IEntryPoint"</span><p class="paragraph"/>    def fooService // <span class="java&#45;quote">"Other services will get injected by Grails"</span><p class="paragraph"/>    @Override
     <span class="java&#45;object">int</span> createUI() &#123;
-        Display display = <span class="java&#45;keyword">new</span> Display()
+        log.info(<span class="java&#45;quote">"Creating RWT UI ..."</span>) // <span class="java&#45;quote">"Implicit logger object"</span><p class="paragraph"/>        Display display = <span class="java&#45;keyword">new</span> Display()
         Shell shell = <span class="java&#45;keyword">new</span> Shell(display)
         shell.setSize(500, 400)
         shell.layout = <span class="java&#45;keyword">new</span> GridLayout()
@@ -214,7 +220,7 @@ snippet highlight interesting points.<p class="paragraph"/><div class="code"><pr
         <span class="java&#45;keyword">return</span> 0
     &#125;
 &#125;</pre></div><p class="paragraph"/>According to the Grails conventions, a Spring bean called <code>helloEntryPointService</code> will be registered
-automatically on application start. The next step is to configure our newly create entry point.<p class="paragraph"/><blockquote class="note">
+automatically on application start. The next step is to configure our newly created entry point.<p class="paragraph"/><blockquote class="note">
 The given code snippet is just a very simple example to demonstrate the usage. You should develop
 your application using a cleaner separation of concerns, i.e. by employing the MVC or MVP pattern.
 </blockquote>
@@ -223,7 +229,7 @@ your application using a cleaner separation of concerns, i.e. by employing the M
 <h2 id="configureEntryPoint">2.3 Configuring the Entry Point</h2>
 The only thing that is missing now is the configuration of our new RWT entry point. This is done
 in an own <a href="http://grails.org/doc/latest/guide/conf.html#config" target="blank">configuration</a> block in the
-<code>Config.groovy</code> file.<p class="paragraph"/><div class="code"><pre>// RWT configuration
+<code>grails-app/conf/Config.groovy</code> file.<p class="paragraph"/><div class="code"><pre>// RWT configuration
 rwt &#123;<p class="paragraph"/>    // Entry points configuration
     entrypoints &#123;<p class="paragraph"/>        // Configuration of an entry point named 'hello', the relative URL path will be '/hello'.
         hello &#123;
@@ -256,7 +262,7 @@ explore the features that RWT provides.
 
 
 <h1 id="configuration">3 Configuration</h1>
-The RWT application goes into a special configuration block in the <code>Config.groovy</code> file.<p class="paragraph"/><div class="code"><pre>rwt &#123;
+The RWT configuration goes into a special block in the <code>grails-app/conf/Config.groovy</code> file.<p class="paragraph"/><div class="code"><pre>rwt &#123;
     // RWT configuration goes here.
 &#125;</pre></div><p class="paragraph"/>There are two aspects that can be configured, the global RWT settings, and the settings
 specific to the single entry points.
@@ -296,7 +302,8 @@ different entry point beans.<p class="paragraph"/><div class="code"><pre>rwt &#1
 <h2 id="loggingConfiguration">3.3 Logging Configuration</h2>
 The plugin logs some information in the INFO and DEBUG levels. To increase the verbosity of the
 log messages you can enable the debug level for some plugin artifacts. Add the following lines to
-the <a href="http://grails.org/doc/latest/guide/conf.html#logging" target="blank">log4j section</a> in your <code>Config.groovy</code> file:<p class="paragraph"/><div class="code"><pre>log4j = &#123;<p class="paragraph"/>    debug 'grails.app.conf.RwtPluginBootStrap'
+the <a href="http://grails.org/doc/latest/guide/conf.html#logging" target="blank">log4j section</a> in your <code>Config.groovy</code> file:<p class="paragraph"/><div class="code"><pre>log4j = &#123;
+    // Other logging configurations<p class="paragraph"/>    debug 'grails.app.conf.RwtPluginBootStrap'
     debug 'grails.plugins.rwt'
     debug 'RwtGrailsPlugin'
 &#125;</pre></div>
@@ -307,8 +314,9 @@ the <a href="http://grails.org/doc/latest/guide/conf.html#logging" target="blank
 application name would be 'foo' and the entry point name 'hello', the URL would look like this:
 <code>http://server/foo/hello</code><p class="paragraph"/>Sometimes it may be desired to reach the entry point under the base URL or a different URL. This can
 easily be achieved by using the <a href="http://grails.org/doc/latest/guide/theWebLayer.html#urlmappings" target="blank">Grails URL Mappings</a>.
-To map the entry point to the base URL, the following needs to be configured in the <code>UrlMappings.groovy</code>
-file:<p class="paragraph"/><div class="code"><pre>class UrlMappings &#123;<p class="paragraph"/>    <span class="java&#45;keyword">static</span> mappings = &#123;<p class="paragraph"/>        <span class="java&#45;quote">"/"</span>(uri: <span class="java&#45;quote">"/hello"</span>)
+To map the entry point to the base URL, the following needs to be configured in the <code>grails-app/conf/UrlMappings.groovy</code>
+file:<p class="paragraph"/><div class="code"><pre>class UrlMappings &#123;<p class="paragraph"/>    <span class="java&#45;keyword">static</span> mappings = &#123;
+        // Other mapping configurations<p class="paragraph"/>        <span class="java&#45;quote">"/"</span>(uri: <span class="java&#45;quote">"/hello"</span>)
     &#125;
 &#125;</pre></div><p class="paragraph"/>Now the RWT application is reachable via: <code>http://server/foo</code>
 
