@@ -12,8 +12,9 @@ URLs with the actual name of your example application.
 
 h3. Example Code
 
-There is an example project available on GitHub that can be used as a kickstart. It contains the
-example code shown in this guide and is properly configured to get started immediately. 
+There is an example project [available on GitHub|http://github.com/bwolff/grails-rwt-example] that
+can be used as a kickstart. It contains the example code shown in this guide and is properly
+configured to get started immediately. 
 
 {code}
 git clone https://github.com/bwolff/grails-rwt-example

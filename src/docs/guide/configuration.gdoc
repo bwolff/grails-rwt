@@ -1,4 +1,4 @@
-The RWT application goes into a special configuration block in the @Config.groovy@ file.
+The RWT configuration goes into a special block in the @grails-app/conf/Config.groovy@ file.
 
 {code}
 rwt {

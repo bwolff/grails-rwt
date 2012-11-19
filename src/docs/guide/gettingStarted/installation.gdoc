@@ -1,10 +1,12 @@
 The plugin is installed using the default [Grails plugin installation mechanism|http://grails.org/doc/latest/guide/conf.html#pluginDependencies].
-Simply add/modify the following lines to the plugin dependency section in the @BuildConfig.groovy@ file:
+Simply add/modify the following lines to the plugin dependency section in the @grails-app/conf/BuildConfig.groovy@ file:
 
 {code}
 grails.project.dependency.resolution = {
 
     plugins {
+        // Other plugin dependencies
+
         compile ':rwt:0.1'
     }
 }

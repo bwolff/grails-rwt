@@ -36,6 +36,8 @@ class HelloEntryPointService implements IEntryPoint { // "The service needs to i
 
     @Override
     int createUI() {
+        log.info("Creating RWT UI ...") // "Implicit logger object"
+        
         Display display = new Display()
         Shell shell = new Shell(display)
         shell.setSize(500, 400)
@@ -71,7 +73,7 @@ class HelloEntryPointService implements IEntryPoint { // "The service needs to i
 {code}
 
 According to the Grails conventions, a Spring bean called @helloEntryPointService@ will be registered
-automatically on application start. The next step is to configure our newly create entry point.
+automatically on application start. The next step is to configure our newly created entry point.
 
 {note}
 The given code snippet is just a very simple example to demonstrate the usage. You should develop

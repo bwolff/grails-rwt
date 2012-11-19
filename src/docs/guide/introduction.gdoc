@@ -2,12 +2,12 @@ This plugin integrates the [RAP Widget Toolkit (RWT)|http://wiki.eclipse.org/Wid
 web-based Ajax/JavaScript widget library similar to [SWT|http://www.eclipse.org/swt/] - into your Grails
 application.
 
-RWT is the UI part of the [Rich Ajax Platform (RAP)|http://www.eclipse.org/rap] - the web-ported
-[Eclipse RCP|http://wiki.eclipse.org/index.php/Rich_Client_Platform] application platform. RWT is
-provided in
+RWT is the web UI part of the [Remote Application Platform (RAP)|http://www.eclipse.org/rap] - an
+application framework based on the [Eclipse platform|http://wiki.eclipse.org/Platform].
+RWT is provided in
 [standalone|http://eclipse.org/rap/developers-guide/devguide.php?topic=advanced/rwt-standalone.html]
-mode by this plugin, without the full RAP workbench or OSGi. It also enables you to use the
-[JFace API|http://wiki.eclipse.org/JFace] for building your user interfaces.
+mode by this plugin, without the full RAP workbench or OSGi. Besides the SWT API, you can use the
+[JFace API|http://wiki.eclipse.org/JFace] to build your user interfaces.
 
 RWT enables you to create highly interactive, desktop-like Ajax interfaces by only writing
 Java/Groovy code. In contrast to the popular [Google Web Toolkit|http://developers.google.com/web-toolkit/] ([Grails plugin|http://grails.org/plugin/gwt]),
@@ -22,9 +22,10 @@ For more information please refer to the documentation of the particular technol
 The following pages will provide you with the necessary information to get started with Grails and
 RWT. Have fun!
 
-h3. RWT Version
+h3. Grails & RWT Version
 
-The current version of this plugin comes with [RWT 2.0 M3|http://www.eclipse.org/rap/noteworthy/2.0/?build=M3].
+The plugin requires at least [Grails 2.0|http://grails.org/Download] to be used. The current version
+of this plugin ships with [RWT 2.0 M3|http://www.eclipse.org/rap/noteworthy/2.0/?build=M3].
 
 h3. License
 

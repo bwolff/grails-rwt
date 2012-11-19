@@ -1,6 +1,6 @@
 The only thing that is missing now is the configuration of our new RWT entry point. This is done
 in an own [configuration|http://grails.org/doc/latest/guide/conf.html#config] block in the
-@Config.groovy@ file. 
+@grails-app/conf/Config.groovy@ file.
 
 {code}
 // RWT configuration
