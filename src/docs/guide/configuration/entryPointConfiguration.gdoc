@@ -3,9 +3,11 @@ configuration block within the @rwt@ section.
 
 {code}
 rwt {
-    hello {
-        bean = 'entryPointBean'
-        pageTitle = 'Hello RWT World!'
+    entrypoints {
+        hello {
+            bean = 'entryPointBean'
+            pageTitle = 'Hello RWT World!'
+        }
     }
 }
 {code}
@@ -22,16 +24,20 @@ different entry point beans.
 
 {code}
 rwt {
-    hello {
-        bean = 'helloEntryPoint'
-        pageTitle = 'Hello RWT World!'
-    }
-    
-    helloAgain {
-        bean = 'helloAgainEntryPoint'
-        pageTitle = 'Hello again, RWT World!'
+    entrypoints {
+        hello {
+            bean = 'helloEntryPoint'
+            pageTitle = 'Hello RWT World!'
+        }
+        
+        helloAgain {
+            bean = 'helloAgainEntryPoint'
+            pageTitle = 'Hello again, RWT World!'
+        }
     }
 }
 {code}
 
 In this example there will be two entry points accessible under '/hello' and '/helloAgain'.
+
+For customizing the default URL mapping behaviour please see the [Advanced Topics|guide:advancedTopics] chapter.
