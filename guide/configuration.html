@@ -115,9 +115,11 @@ Options to configure global aspects of the RWT application will come in future v
 <h2 id="entryPointConfiguration">3.2 Entry Point Configuration</h2>
 An RWT application can consist of one or more entry points. Each entry point is configured as a
 configuration block within the <code>rwt</code> section.<p class="paragraph"/><div class="code"><pre>rwt &#123;
-    hello &#123;
-        bean = 'entryPointBean'
-        pageTitle = 'Hello RWT World!'
+    entrypoints &#123;
+        hello &#123;
+            bean = 'entryPointBean'
+            pageTitle = 'Hello RWT World!'
+        &#125;
     &#125;
 &#125;</pre></div><p class="paragraph"/>The given example configures an entry point with the name <code>hello</code>. By default, this entry point will
 be mapped to the relative URL path '/hello'. The following settings need to be provided for an
@@ -127,14 +129,16 @@ entry point configuration:
 <li><strong class="bold">pageTitle</strong> - The title (string) that will be displayed as the browser's title (optional).</li>
 </ul><p class="paragraph"/>A Grails-RWT application can contain an arbitrary number of entry points, which usually refer to
 different entry point beans.<p class="paragraph"/><div class="code"><pre>rwt &#123;
-    hello &#123;
-        bean = 'helloEntryPoint'
-        pageTitle = 'Hello RWT World!'
-    &#125;<p class="paragraph"/>    helloAgain &#123;
-        bean = 'helloAgainEntryPoint'
-        pageTitle = 'Hello again, RWT World!'
+    entrypoints &#123;
+        hello &#123;
+            bean = 'helloEntryPoint'
+            pageTitle = 'Hello RWT World!'
+        &#125;<p class="paragraph"/>        helloAgain &#123;
+            bean = 'helloAgainEntryPoint'
+            pageTitle = 'Hello again, RWT World!'
+        &#125;
     &#125;
-&#125;</pre></div><p class="paragraph"/>In this example there will be two entry points accessible under '/hello' and '/helloAgain'.
+&#125;</pre></div><p class="paragraph"/>In this example there will be two entry points accessible under '/hello' and '/helloAgain'.<p class="paragraph"/>For customizing the default URL mapping behaviour please see the <a href="../guide/single.html#advancedTopics" class="guide">Advanced Topics</a> chapter.
 
 
 
