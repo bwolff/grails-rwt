@@ -1,6 +1,5 @@
-import grails.plugins.rwt.EntryPointConfiguration
-
-import org.eclipse.rap.rwt.application.Application.OperationMode
+import grails.plugins.rwt.EntryPointConfigurationHelper
+import grails.plugins.rwt.ThemeConfigurationHelper
 
 class RwtGrailsPlugin {
     def version = "0.1"
@@ -20,9 +19,9 @@ complete Grails framework stack with all its powerful features and syntactic DSL
     def scm = [ url: "https://github.com/bwolff/grails-rwt/" ]
 
     def doWithWebDescriptor = { xml ->
-        // If there is no RWT entry points configured, don't register the RWT servlet.
-        def paths = getEntryPointPaths(application)
-        if (!paths) {
+        // If there is no RWT entry point configured, don't register the RWT servlet.
+        final entryPointHelper = new EntryPointConfigurationHelper(application.config)
+        if (!entryPointHelper.hasEntryPoints()) {
             log.warn "No RWT entry point configured. Skipping RWT servlet registration ..."
             return
         }
@@ -38,7 +37,7 @@ complete Grails framework stack with all its powerful features and syntactic DSL
         }
 
         // Add an RWT servlet mapping for each configured entry point path.
-        paths.each { path ->
+        entryPointHelper.entryPointPaths.each { path ->
             def mappingElement = xml.'servlet-mapping'
             lastMapping = mappingElement[mappingElement.size() - 1]
             lastMapping + {
@@ -55,42 +54,25 @@ complete Grails framework stack with all its powerful features and syntactic DSL
     def doWithSpring = {
         // If there is no RWT entry points configured, don't create the RWT application
         // configuration bean.
-        def configurations = getEntryPointConfigurations(application)
-        if (!configurations) {
+        final entryPointHelper = new EntryPointConfigurationHelper(application.config)
+        if (!entryPointHelper.hasEntryPoints()) {
             log.warn "No RWT entry points configured. Skipping RWT application configuration."
             return
         }
+        
+        final themeHelper = new ThemeConfigurationHelper(application.config)
 
-        // Extract the RWT operation mode. The operation mode defaults to JEE_COMPATIBILITY, which
-        // is the recommended mode for new standalone RWT applications.
+        // Extract the RWT operation mode. If not provided, the operation mode defaults to
+        // JEE_COMPATIBILITY, which is the recommended mode for new standalone RWT applications.
         // See: http://eclipse.org/rap/developers-guide/devguide.php?topic=advanced/application-setup.html#compat
-        def opMode = application.config.rwt.operationmode ?: OperationMode.JEE_COMPATIBILITY
+        final opMode = application.config.rwt.operationmode ?: null
 
         // Create the RWT ApplicationConfiguration bean.
         rwtApplicationConfiguration(grails.plugins.rwt.ApplicationConfigurationBean) {
             grailsApplication = ref('grailsApplication')
             operationMode = opMode
-            entryPointConfigurations = configurations
-        }
-    }
-
-    private getEntryPointPaths(application) {
-        return application.config.rwt.entrypoints.collect { name, values -> '/' + name }
-    }
-
-    private getEntryPointConfigurations(application) {
-        application.config.rwt.entrypoints.collect { name, values ->
-            def path = '/' + name
-            def entryPointBeanName = values.bean ?: null // TODO This would be an error!
-            def entryPointConfiguration = new EntryPointConfiguration()
-            entryPointConfiguration.path = path
-            entryPointConfiguration.entryPointBeanName = entryPointBeanName
-            entryPointConfiguration.pageTitle = values.pageTitle ?: null
-            entryPointConfiguration.favicon = values.favicon ?: null
-            entryPointConfiguration.themeId = values.themeId ?: null
-            entryPointConfiguration.headHtml = values.headHtml ?: null
-            entryPointConfiguration.bodyHtml = values.bodyHtml ?: null
-            return entryPointConfiguration
+            entryPointConfigurationHelper = entryPointHelper
+            themeConfigurationHelper = themeHelper
         }
     }
 }
