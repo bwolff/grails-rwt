@@ -43,7 +43,7 @@ class ThemeConfigurationBean {
 
     void validateThemeFilesExists() {
         // The theme files need to be available on the classpath.
-        themeFilePaths.each { String path ->
+        themeFilePaths?.each { String path ->
             if (!getClass().getClassLoader().getResourceAsStream(path)) {
                 throw new GrailsConfigurationException("[RWT] The custom RWT theme" +
                         " \"${themeId}\" references a file that is not available on the" +

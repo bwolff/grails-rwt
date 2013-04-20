@@ -1,0 +1,33 @@
+The plugin supports a simply configuration of
+[RWT themes and theme contributions|http://www.eclipse.org/rap/developers-guide/devguide.php?topic=theming.html&version=2.0]
+that can be used in the entry point configuration. The themes are provided via CSS files and
+configured via relative paths in the application's classpath. Shown below is an example theme
+configuration:
+
+{code}
+rwt {
+    themes {
+        rwtdefault = 'themes/default.css'
+        mytheme = 'themes/mytheme.css'
+        mytheme2 = ['themes/mytheme2.css', 'themes/mytheme3.css']
+    }
+}
+{code}
+
+Themes are configured in the @themes@ block, each entry in this block represents a different theme,
+the name of the entry is the theme ID that is used to reference it in the [entry point configuration|guide:entryPointConfiguration].
+A special theme name is @rwtdefault@. This name references the default RWT theme and the CSS files
+provided for this name are treated as contributions and will be merged into the RWT default theme.
+Additions to this theme are automatically applied to your widgets without the need to add a theme
+configuration to your entry point. The example shown above also creates the two custom themes with
+the ID @mytheme@ and @mytheme2@.
+
+As mentioned before, the values of the themes are paths denoting a CSS file on the classpath. The
+value can be a single path string or a list of path strings. In case a list of paths is provided,
+the first file will be used as the main theme file and the subsequent files are treated as contributions
+to this theme file. The order in which they are specified determine the order in which the
+contributions are applied. This mechanism allows it to enhance your own themes with theme additions coming
+from other plugins or libraries, as long as the CSS files are accessible via the classpath.
+
+For more information about theming in RWT and what widgets and properties are supported in the CSS
+please refer to the [RWT theming documentation|http://www.eclipse.org/rap/developers-guide/devguide.php?topic=theming.html&version=2.0].

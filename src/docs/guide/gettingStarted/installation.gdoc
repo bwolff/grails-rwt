@@ -7,7 +7,7 @@ grails.project.dependency.resolution = {
     plugins {
         // Other plugin dependencies
 
-        compile ':rwt:0.1'
+        compile ':rwt:1.0'
     }
 }
 {code}

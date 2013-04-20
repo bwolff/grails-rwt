@@ -21,6 +21,7 @@ package grails.plugins.rwt
 import groovy.util.ConfigObject
 
 import org.eclipse.rap.rwt.application.Application.OperationMode
+import org.eclipse.rap.rwt.lifecycle.PhaseListener
 
 /**
  * Simple pogo that encapsulates the configuration for the RWT application. There is only one
@@ -33,16 +34,24 @@ class ApplicationConfigurationBean {
     /**
      * The RWT operation mode. If not provided, the operation mode defaults to JEE_COMPATIBILITY,
      * which is the recommended mode for new standalone RWT applications.
-     *
+     * <p>
      * See: http://eclipse.org/rap/developers-guide/devguide.php?topic=advanced/application-setup.html#compat
      */
     OperationMode operationMode
+    List phaseListeners
+    List<Class> themableWidgets
 
     public ApplicationConfigurationBean(ConfigObject grailsConfig) {
         extractApplicationConfiguration(grailsConfig)
     }
 
     private void extractApplicationConfiguration(ConfigObject grailsConfig) {
-        operationMode = grailsConfig.rwt.operationMode ?: null
+        def operationModeSetting = grailsConfig.rwt.operationMode ?: null
+        if (operationModeSetting instanceof String) {
+            operationModeSetting = OperationMode.valueOf(operationModeSetting)
+        }
+        operationMode = operationModeSetting
+        phaseListeners = grailsConfig.rwt.phaseListeners ?: null
+        themableWidgets = grailsConfig.rwt.themableWidgets ?: null
     }
 }

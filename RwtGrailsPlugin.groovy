@@ -3,7 +3,7 @@ import grails.plugins.rwt.ThemeConfigurationHelper
 import grails.plugins.rwt.ApplicationConfigurationBean
 
 class RwtGrailsPlugin {
-    def version = "0.1"
+    def version = "1.0"
     def grailsVersion = "2.0 > *"
     def title = "The RAP Widget Toolkit (RWT) for Grails"
     def author = "Benjamin Wolff"

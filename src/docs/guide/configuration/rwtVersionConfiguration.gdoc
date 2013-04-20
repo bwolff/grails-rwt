@@ -1,0 +1,24 @@
+The current version of the plugin is based on RWT version 2.0. The required libraries are resolved
+from the Maven central repository using the default [Grails dependency mechanism (Ivy)|http://grails.org/doc/latest/guide/conf.html#ivy].
+An application can override these dependencies manually to use a more recent version of RWT. This
+can be useful to test new milestone releases or use new service releases without having to wait for
+a new release of the Grails-RWT plugin.
+
+{warning}
+The internal mechanisms of the Grails RWT plugin are currently based on the API of version 2.0. If
+you use a new RWT version that comes with breaking API changes the plugin won't work anymore. In
+order to use the latest RWT version in this case a new release of the Grails RWT plugin is necessary.
+{warning}
+
+Here is an example configuration in the BuildConfig.groovy to use an RWT 2.1 milestone release:
+
+{code}
+grails.project.dependency.resolution = {
+
+    dependencies {
+        compile('org.eclipse.rap:org.eclipse.rap.rwt:2.1.0-M1')
+        compile('org.eclipse.rap:org.eclipse.rap.jface:2.1.0-M1')
+        compile('org.eclipse.rap:org.eclipse.rap.jface.databinding:2.1.0-M1')
+    }
+}
+{code}

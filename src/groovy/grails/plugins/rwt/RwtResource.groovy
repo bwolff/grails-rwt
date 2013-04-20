@@ -18,29 +18,13 @@
  ******************************************************************************/
 package grails.plugins.rwt
 
-import java.io.IOException
-import java.io.InputStream;
+class RwtResource {
 
-import org.eclipse.rap.rwt.service.ResourceLoader;
+    final String name
+    final String path
 
-class RwtClasspathResourceLoader implements ResourceLoader {
-
-    final String resourcePath
-
-    public RwtClasspathResourceLoader() {
-        this(null)
-    }
-
-    public RwtClasspathResourceLoader(String resourcePath) {
-        this.resourcePath = resourcePath
-    }
-
-    @Override
-    public InputStream getResourceAsStream(String resourceName) throws IOException {
-        if (resourcePath) {
-            resourceName = resourcePath
-        }
-
-        return getClass().getClassLoader().getResourceAsStream(resourceName)
+    public RwtResource(String name, String path) {
+        this.name = name
+        this.path = path
     }
 }

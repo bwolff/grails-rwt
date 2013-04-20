@@ -6,5 +6,20 @@ rwt {
 }
 {code}
 
-There are two aspects that can be configured, the global RWT settings, and the settings
-specific to the single entry points.
+There are different aspects that can be configured, the global RWT application settings, the entry
+point settings, and the theme settings.
+
+For more information about RWT in general please have a look at the
+[RAP/RWT 2.0 developer's guide|http://www.eclipse.org/rap/developers-guide/index.php?version=2.0].
+
+{note}
+*Classpath Resources*
+
+Some configuration settings (e.g. theme CSS files) expect a relative path to a file that is visible
+on the classpath. The easiest way is to put your static file resources in a
+sub-folder of @src/java@ or @src/groovy@ of your Grails application. This way the files are
+available in the classpath without any additional configuration.
+
+This also enables you to reference files that are provided in the classpath by other plugins or
+libraries.
+{note}

@@ -13,6 +13,8 @@ configuration:
     title: Configuration
     applicationConfiguration: Application Configuration
     entryPointConfiguration: Entry Point Configuration
+    themeConfiguration: Theme Configuration
     loggingConfiguration: Logging Configuration
+    rwtVersionConfiguration: RWT Version Configuration
 advancedTopics:
     title: Advanced Topics

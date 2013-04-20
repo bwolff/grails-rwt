@@ -6,7 +6,7 @@ rwt {
     entrypoints {
         hello {
             bean = 'entryPointBean'
-            pageTitle = 'Hello RWT World!'
+            ...
         }
     }
 }
@@ -16,8 +16,12 @@ The given example configures an entry point with the name @hello@. By default, t
 be mapped to the relative URL path '/hello'. The following settings need to be provided for an
 entry point configuration:
 
-* *bean* - The name (string) of the bean that implements the IEntryPoint interface (mandatory).
+* *bean* - The name (string) of the bean that implements the EntryPoint interface (mandatory).
 * *pageTitle* - The title (string) that will be displayed as the browser's title (optional).
+* *favicon* - Relative path to an .ico image that will be used as the favicon for the entry point (optional).
+* *themeId* - (optional).
+* *headHtml* - Relative path to a file containing HTML. The content of the file will be added to the <head> element of the page (optional). Please see
+* *bodyHtml* - Relative path to a file containing HTML. The content of the file will be added to the <body> element of the page (optional).
 
 A Grails-RWT application can contain an arbitrary number of entry points, which usually refer to
 different entry point beans.
@@ -27,17 +31,34 @@ rwt {
     entrypoints {
         hello {
             bean = 'helloEntryPoint'
-            pageTitle = 'Hello RWT World!'
+            ...
         }
         
         helloAgain {
             bean = 'helloAgainEntryPoint'
-            pageTitle = 'Hello again, RWT World!'
+            ...
         }
     }
 }
 {code}
 
-In this example there will be two entry points accessible under '/hello' and '/helloAgain'.
+In this example there will be two entry points accessible under '/hello' and '/helloAgain'. For
+customizing the default URL mapping behaviour please see the [Advanced Topics|guide:advancedTopics]
+chapter.
 
-For customizing the default URL mapping behaviour please see the [Advanced Topics|guide:advancedTopics] chapter.
+Shown below is an example with all available entry point configuration values:
+
+{code}
+rwt {
+    entrypoints {
+        hello {
+            bean = 'helloEntryPointService'
+            pageTitle = 'Hello RWT World!'
+            favicon = 'icons/favicon.ico'
+            themeId = 'mytheme'
+            headHtml = 'html/head.html'
+            bodyHtml = 'html/body.html'
+        }
+    }
+}
+{code}

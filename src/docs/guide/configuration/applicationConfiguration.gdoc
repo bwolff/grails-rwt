@@ -1,1 +1,5 @@
 Options to configure global aspects of the RWT application will come in future versions of this plugin.
+
+* *operationMode* - [RWT documentation about operation modes|http://www.eclipse.org/rap/developers-guide/devguide.php?topic=application-setup.html&version=2.0#compat] (optional).
+* *phaseListeners* - (optional).
+* *themableWidgets* - (optional).

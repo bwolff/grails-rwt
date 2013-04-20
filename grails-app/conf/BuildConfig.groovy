@@ -8,6 +8,8 @@ grails.project.dependency.resolution = {
 
 	repositories {
 		grailsCentral()
+        mavenLocal()
+        mavenCentral() // Required for resolving the RWT bundles.
 	}
 
     dependencies {
