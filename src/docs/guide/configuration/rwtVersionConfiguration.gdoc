@@ -22,3 +22,13 @@ grails.project.dependency.resolution = {
     }
 }
 {code}
+
+{note}
+The RWT JFace libs require 3 additional dependencies which are currently not present in the Maven
+central in the required version. Therefore, these dependencies are bundled in the lib folder of the
+RWT plugin. If you manually configure a newer RWT JFace version, you should make sure that the
+provided dependencies still satisfy the required version range of the RWT JFace libs. If they
+require new versions of the dependency you could grab the libs i.e. from the RAP target platform
+and put those in the lib folder of the project, so that they override the outdated versions
+provided by the RWT plugin.
+{note}
