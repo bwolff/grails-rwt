@@ -16,12 +16,12 @@ The given example configures an entry point with the name @hello@. By default, t
 be mapped to the relative URL path '/hello'. The following settings need to be provided for an
 entry point configuration:
 
-* *bean* - The name (string) of the bean that implements the EntryPoint interface (mandatory).
-* *pageTitle* - The title (string) that will be displayed as the browser's title (optional).
-* *favicon* - Relative path to an .ico image that will be used as the favicon for the entry point (optional).
-* *themeId* - (optional).
-* *headHtml* - Relative path to a file containing HTML. The content of the file will be added to the <head> element of the page (optional). Please see
-* *bodyHtml* - Relative path to a file containing HTML. The content of the file will be added to the <body> element of the page (optional).
+* *bean* - The name (string) of the registered Spring bean that implements the EntryPoint interface _(mandatory)_.
+* *pageTitle* - The title (string) that will be displayed as the browser's title _(optional)_.
+* *favicon* - Relative path to an .ico image that will be used as the favicon for the entry point _(optional)_.
+* *themeId* - The ID of the registered theme _(optional)_. Please see the [theme configuration section|guide:themeConfiguration] in this guide.
+* *headHtml* - Relative path to a file containing HTML _(optional)_. The content of the file will be added to the <head> element of the host page. Please see the [RWT JavaDocs|http://download.eclipse.org/rt/rap/doc/2.1/guide/reference/api/org/eclipse/rap/rwt/client/WebClient.html#HEAD_HTML] for more information.
+* *bodyHtml* - Relative path to a file containing HTML _(optional)_. The content of the file will be added to the <body> element of the host page. Please see the [RWT JavaDocs|http://download.eclipse.org/rt/rap/doc/2.1/guide/reference/api/org/eclipse/rap/rwt/client/WebClient.html#BODY_HTML] for more information.
 
 A Grails-RWT application can contain an arbitrary number of entry points, which usually refer to
 different entry point beans.
@@ -46,7 +46,7 @@ In this example there will be two entry points accessible under '/hello' and '/h
 customizing the default URL mapping behaviour please see the [Advanced Topics|guide:advancedTopics]
 chapter.
 
-Shown below is an example with all available entry point configuration values:
+Shown below is an example with all currently available entry point configuration values:
 
 {code}
 rwt {

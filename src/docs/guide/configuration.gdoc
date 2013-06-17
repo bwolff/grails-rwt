@@ -10,7 +10,7 @@ There are different aspects that can be configured, the global RWT application s
 point settings, and the theme settings.
 
 For more information about RWT in general please have a look at the
-[RAP/RWT 2.0 developer's guide|http://www.eclipse.org/rap/developers-guide/index.php?version=2.0].
+[RAP/RWT 2.1 developer's guide|http://www.eclipse.org/rap/developers-guide/index.php?version=2.1].
 
 {note}
 *Classpath Resources*

@@ -8,6 +8,7 @@ log4j = {
 
     debug 'grails.app.conf.RwtPluginBootStrap'
     debug 'grails.plugins.rwt'
+    debug 'grails.rwt'
     debug 'RwtGrailsPlugin'
 }
 {code}

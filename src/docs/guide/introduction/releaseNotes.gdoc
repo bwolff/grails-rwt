@@ -1,8 +1,9 @@
-* April 18, 2013
+* June 26, 2013
 ** 1.0 release
 ** Added support for configuring more RWT application aspects (e.g. themes).
-** Updated to use the RWT 2.0 final release.
+** Updated to use the RWT 2.1 final release.
 ** RWT dependencies are now resolved from the Maven central repository.
+** Improved developer's guide.
 
 * November 18, 2012
 ** First 0.1 release

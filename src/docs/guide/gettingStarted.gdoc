@@ -1,9 +1,11 @@
 This short guide will get you started with all you need to know to create your first Grails-RWT
-application. You should be familiar with how to [create a Grails application|http://grails.org/doc/latest/guide/gettingStarted.html#creatingAnApplication]
+application. You should be familiar with how to
+[create a Grails application|http://grails.org/doc/latest/guide/gettingStarted.html#creatingAnApplication]
 and artifacts like [domain classes|http://grails.org/doc/latest/guide/GORM.html#quickStartGuide] and
 [services|http://grails.org/doc/latest/guide/services.html].
 
-The RWT setup process is based on the [standalone guide|http://www.eclipse.org/rap/developers-guide/devguide.php?topic=rwt-standalone.html&version=2.0].
+The RWT setup process is based on the
+[standalone guide|http://www.eclipse.org/rap/developers-guide/devguide.php?topic=rwt-standalone.html&version=2.1].
 However, the Grails-RWT plugin does most of the setup for you, as you will see in this guide.
 
 Start with creating an example Grails application and then follow the instructions below. The next

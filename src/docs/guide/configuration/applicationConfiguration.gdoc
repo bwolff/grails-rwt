@@ -1,5 +1,25 @@
-Options to configure global aspects of the RWT application will come in future versions of this plugin.
+There are a few configuration settings available that configure global aspects of a RWT application. Currently, all the documented settings here are optional. Therefore, you don't have to specify any of them if you don't have any special requirements.
 
-* *operationMode* - [RWT documentation about operation modes|http://www.eclipse.org/rap/developers-guide/devguide.php?topic=application-setup.html&version=2.0#compat] (optional).
-* *phaseListeners* - (optional).
-* *themableWidgets* - (optional).
+The global RWT configuration go directly into the @rwt@ configuration block in the Config.groovy:
+{code}
+rwt {
+    // Global RWT application configuration goes here.
+}
+{code}
+
+The currently supported settings are:
+
+* *operationMode* - The [RWT operation mode|http://www.eclipse.org/rap/developers-guide/devguide.php?topic=application-setup.html&version=2.1#compat] as a string _(optional)_. Currently supported values are 'JEE_COMPATIBILITY' _(default)_, 'SWT_COMPATIBILITY', and 'SESSION_FAILOVER'.
+* *phaseListeners* - A list of either Class instances or the names (string) of a registered Spring bean that implement the [PhaseListener interface|http://download.eclipse.org/rt/rap/doc/2.1/guide/reference/api/org/eclipse/rap/rwt/lifecycle/PhaseListener.html] _(optional)_. In case a Class instance is used the class needs to have a public default constructor without arguments. The list can also contain Class instances and bean names at the same time.
+* *themableWidgets* - A list of Class instances of themable custom widgets _(optional)_. For more information about custom widgets please see the [RWT documentation|http://www.eclipse.org/rap/developers-guide/devguide.php?topic=custom-widget.html&version=2.1] and the [RWT JavaDocs|http://download.eclipse.org/rt/rap/doc/2.1/guide/reference/api/org/eclipse/rap/rwt/application/Application.html#addThemableWidget%28java.lang.Class%29].
+
+The following snippet shows an example configuration of all currently available RWT application
+configuration values:
+
+{code}
+rwt {
+    operationMode = 'SESSION_FAILOVER'
+    phaseListeners = [org.example.MyPhaseListener, 'myPhaseListenerBean'] // "Class instances and bean names can be mixed."
+    themableWidgets = [org.example.MyThemableWidget1, org.exampleMyThemableWidget2]
+}
+{code}

@@ -1,5 +1,5 @@
 The plugin supports a simply configuration of
-[RWT themes and theme contributions|http://www.eclipse.org/rap/developers-guide/devguide.php?topic=theming.html&version=2.0]
+[RWT themes and theme contributions|http://www.eclipse.org/rap/developers-guide/devguide.php?topic=theming.html&version=2.1]
 that can be used in the entry point configuration. The themes are provided via CSS files and
 configured via relative paths in the application's classpath. Shown below is an example theme
 configuration:
@@ -30,4 +30,5 @@ contributions are applied. This mechanism allows it to enhance your own themes w
 from other plugins or libraries, as long as the CSS files are accessible via the classpath.
 
 For more information about theming in RWT and what widgets and properties are supported in the CSS
-please refer to the [RWT theming documentation|http://www.eclipse.org/rap/developers-guide/devguide.php?topic=theming.html&version=2.0].
+please refer to the
+[RWT theming reference|http://download.eclipse.org/rt/rap/doc/2.1/guide/reference/theming/index.html].
