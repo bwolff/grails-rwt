@@ -18,7 +18,7 @@ configuration values:
 
 {code}
 rwt {
-    operationMode = 'SESSION_FAILOVER'
+    operationMode = 'SWT_COMPATIBILITY' // "Required to use blocking SWT/JFace APIs like Display#sleep()"
     phaseListeners = [org.example.MyPhaseListener, 'myPhaseListenerBean'] // "Class instances and bean names can be mixed."
     themableWidgets = [org.example.MyThemableWidget1, org.exampleMyThemableWidget2]
 }
