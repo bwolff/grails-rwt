@@ -2,7 +2,7 @@
                       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 <head>
-    <title>3.1 Application Configuration 0.1</title>
+    <title>3.1 Application Configuration 1.0</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <link rel="stylesheet" href="../css/main.css" type="text/css" media="screen, print" title="Style" charset="utf-8"/>
     <link rel="stylesheet" href="../css/pdf.css" type="text/css" media="print" title="PDF" charset="utf-8"/>
@@ -77,7 +77,7 @@ complete Grails framework stack with all its powerful features and syntactic DSL
 
                     <p><strong>Authors:</strong> Benjamin Wolff</p>
 
-                    <p><strong>Version:</strong> 0.1</p>
+                    <p><strong>Version:</strong> 1.0</p>
 
                     
                 </div>
@@ -87,7 +87,20 @@ complete Grails framework stack with all its powerful features and syntactic DSL
                 
 
 <h2 id="applicationConfiguration">3.1 Application Configuration</h2>
-Options to configure global aspects of the RWT application will come in future versions of this plugin.
+There are a few configuration settings available that configure global aspects of a RWT application. Currently, all the documented settings here are optional. Therefore, you don't have to specify any of them if you don't have any special requirements.<p class="paragraph"/>The global RWT configuration go directly into the <code>rwt</code> configuration block in the Config.groovy:
+<div class="code"><pre>rwt &#123;
+    // Global RWT application configuration goes here.
+&#125;</pre></div><p class="paragraph"/>The currently supported settings are:
+<ul class="star">
+<li><strong class="bold">operationMode</strong> - The <a href="http://www.eclipse.org/rap/developers-guide/devguide.php?topic=application-setup.html&version=2.1#compat" target="blank">RWT operation mode</a> as a string  <em class="italic">(optional)</em> . Currently supported values are 'JEE_COMPATIBILITY'  <em class="italic">(default)</em> , 'SWT_COMPATIBILITY', and 'SESSION_FAILOVER'.</li>
+<li><strong class="bold">phaseListeners</strong> - A list of either Class instances or the names (string) of a registered Spring bean that implement the <a href="http://download.eclipse.org/rt/rap/doc/2.1/guide/reference/api/org/eclipse/rap/rwt/lifecycle/PhaseListener.html" target="blank">PhaseListener interface</a>  <em class="italic">(optional)</em> . In case a Class instance is used the class needs to have a public default constructor without arguments. The list can also contain Class instances and bean names at the same time.</li>
+<li><strong class="bold">themableWidgets</strong> - A list of Class instances of themable custom widgets  <em class="italic">(optional)</em> . For more information about custom widgets please see the <a href="http://www.eclipse.org/rap/developers-guide/devguide.php?topic=custom-widget.html&version=2.1" target="blank">RWT documentation</a> and the <a href="http://download.eclipse.org/rt/rap/doc/2.1/guide/reference/api/org/eclipse/rap/rwt/application/Application.html#addThemableWidget%28java.lang.Class%29" target="blank">RWT JavaDocs</a>.</li>
+</ul><p class="paragraph"/>The following snippet shows an example configuration of all currently available RWT application
+configuration values:<p class="paragraph"/><div class="code"><pre>rwt &#123;
+    operationMode = 'SWT_COMPATIBILITY' // <span class="java&#45;quote">"Required to use blocking SWT/JFace APIs like Display&#35;sleep()"</span>
+    phaseListeners = &#91;org.example.MyPhaseListener, 'myPhaseListenerBean'&#93; // <span class="java&#45;quote">"<span class="java&#45;object">Class</span> instances and bean names can be mixed."</span>
+    themableWidgets = &#91;org.example.MyThemableWidget1, org.exampleMyThemableWidget2&#93;
+&#125;</pre></div>
 
 
                 <div style="clear:both;margin-top:15px;"></div>

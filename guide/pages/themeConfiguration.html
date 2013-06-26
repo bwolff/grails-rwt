@@ -2,7 +2,7 @@
                       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 <head>
-    <title>2.1 Installation 1.0</title>
+    <title>3.3 Theme Configuration 1.0</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <link rel="stylesheet" href="../css/main.css" type="text/css" media="screen, print" title="Style" charset="utf-8"/>
     <link rel="stylesheet" href="../css/pdf.css" type="text/css" media="print" title="PDF" charset="utf-8"/>
@@ -62,18 +62,18 @@ complete Grails framework stack with all its powerful features and syntactic DSL
             <div id="main" class="corner-all">
 
                 
-                    <div class="toc-item prev-left"><a href="../../guide/introduction.html">&lt;&lt; <strong>1</strong><span>Introduction</span></a></div>
+                    <div class="toc-item prev-left"><a href="../../guide/gettingStarted.html">&lt;&lt; <strong>2</strong><span>Getting Started</span></a></div>
                 
 
                 <span id='toggle-col1' class="toggle">(<a href="#" onclick="localToggle(); return false;">Quick Reference</a>)</span>
 
                 
-                    <div class="toc-item next-right"><a href="../../guide/configuration.html"><strong>3</strong><span>Configuration</span> >></a></div>
+                    <div class="toc-item next-right"><a href="../../guide/advancedTopics.html"><strong>4</strong><span>Advanced Topics</span> >></a></div>
                 
 
 
                 <div class="project">
-                    <h1>2.1 Installation - Reference Documentation</h1>
+                    <h1>3.3 Theme Configuration - Reference Documentation</h1>
 
                     <p><strong>Authors:</strong> Benjamin Wolff</p>
 
@@ -86,21 +86,39 @@ complete Grails framework stack with all its powerful features and syntactic DSL
 
                 
 
-<h2 id="installation">2.1 Installation</h2>
-The plugin is installed using the default <a href="http://grails.org/doc/latest/guide/conf.html#pluginDependencies" target="blank">Grails plugin installation mechanism</a>.
-Simply add/modify the following lines to the plugin dependency section in the <code>grails-app/conf/BuildConfig.groovy</code> file:<p class="paragraph"/><div class="code"><pre>grails.project.dependency.resolution = &#123;<p class="paragraph"/>    plugins &#123;
-        // Other plugin dependencies<p class="paragraph"/>        compile ':rwt:1.0'
+<h2 id="themeConfiguration">3.3 Theme Configuration</h2>
+The plugin supports a simply configuration of
+<a href="http://www.eclipse.org/rap/developers-guide/devguide.php?topic=theming.html&version=2.1" target="blank">RWT themes and theme contributions</a>
+that can be used in the entry point configuration. The themes are provided via CSS files and
+configured via relative paths in the application's classpath. Shown below is an example theme
+configuration:<p class="paragraph"/><div class="code"><pre>rwt &#123;
+    themes &#123;
+        rwtdefault = 'themes/<span class="java&#45;keyword">default</span>.css'
+        mytheme = 'themes/mytheme.css'
+        mytheme2 = &#91;'themes/mytheme2.css', 'themes/mytheme3.css'&#93;
     &#125;
-&#125;</pre></div><p class="paragraph"/>The plugin will be installed automatically on the next invocation of a Grails command. Your IDE
-(e.g. <a href="http://grails.org/products/ggts" target="blank">STS/GGTS</a>) should also pick up the new installed plugin and should make the contained jar
-libraries available in your Grails project.
+&#125;</pre></div><p class="paragraph"/>Themes are configured in the <code>themes</code> block, each entry in this block represents a different theme,
+the name of the entry is the theme ID that is used to reference it in the <a href="../guide/single.html#entryPointConfiguration" class="guide">entry point configuration</a>.
+A special theme name is <code>rwtdefault</code>. This name references the default RWT theme and the CSS files
+provided for this name are treated as contributions and will be merged into the RWT default theme.
+Additions to this theme are automatically applied to your widgets without the need to add a theme
+configuration to your entry point. The example shown above also creates the two custom themes with
+the ID <code>mytheme</code> and <code>mytheme2</code>.<p class="paragraph"/>As mentioned before, the values of the themes are paths denoting a CSS file on the classpath. The
+value can be a single path string or a list of path strings. In case a list of paths is provided,
+the first file will be used as the main theme file and the subsequent files are treated as contributions
+to this theme file. The order in which they are specified determine the order in which the
+contributions are applied. This mechanism allows it to enhance your own themes with theme additions coming
+from other plugins or libraries, as long as the CSS files are accessible via the classpath.<p class="paragraph"/>For more information about theming in RWT and what widgets and properties are supported in the CSS
+please refer to the
+<a href="http://download.eclipse.org/rt/rap/doc/2.1/guide/reference/theming/index.html" target="blank">RWT theming reference</a>.
+
 
 
                 <div style="clear:both;margin-top:15px;"></div>
                 
-                    <div class="toc-item prev-left"><a href="../../guide/introduction.html">&lt;&lt; <strong>1</strong><span>Introduction</span></a></div>
+                    <div class="toc-item prev-left"><a href="../../guide/gettingStarted.html">&lt;&lt; <strong>2</strong><span>Getting Started</span></a></div>
                 
-                    <div class="toc-item next-right"><a href="../../guide/configuration.html"><strong>3</strong><span>Configuration</span> >></a></div>
+                    <div class="toc-item next-right"><a href="../../guide/advancedTopics.html"><strong>4</strong><span>Advanced Topics</span> >></a></div>
                 
                 <div style="clear:both"></div>
             </div>

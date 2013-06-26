@@ -2,7 +2,7 @@
                       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 <head>
-    <title>2.1 Installation 1.0</title>
+    <title>3.5 RWT Version Configuration 1.0</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <link rel="stylesheet" href="../css/main.css" type="text/css" media="screen, print" title="Style" charset="utf-8"/>
     <link rel="stylesheet" href="../css/pdf.css" type="text/css" media="print" title="PDF" charset="utf-8"/>
@@ -62,18 +62,18 @@ complete Grails framework stack with all its powerful features and syntactic DSL
             <div id="main" class="corner-all">
 
                 
-                    <div class="toc-item prev-left"><a href="../../guide/introduction.html">&lt;&lt; <strong>1</strong><span>Introduction</span></a></div>
+                    <div class="toc-item prev-left"><a href="../../guide/gettingStarted.html">&lt;&lt; <strong>2</strong><span>Getting Started</span></a></div>
                 
 
                 <span id='toggle-col1' class="toggle">(<a href="#" onclick="localToggle(); return false;">Quick Reference</a>)</span>
 
                 
-                    <div class="toc-item next-right"><a href="../../guide/configuration.html"><strong>3</strong><span>Configuration</span> >></a></div>
+                    <div class="toc-item next-right"><a href="../../guide/advancedTopics.html"><strong>4</strong><span>Advanced Topics</span> >></a></div>
                 
 
 
                 <div class="project">
-                    <h1>2.1 Installation - Reference Documentation</h1>
+                    <h1>3.5 RWT Version Configuration - Reference Documentation</h1>
 
                     <p><strong>Authors:</strong> Benjamin Wolff</p>
 
@@ -86,21 +86,38 @@ complete Grails framework stack with all its powerful features and syntactic DSL
 
                 
 
-<h2 id="installation">2.1 Installation</h2>
-The plugin is installed using the default <a href="http://grails.org/doc/latest/guide/conf.html#pluginDependencies" target="blank">Grails plugin installation mechanism</a>.
-Simply add/modify the following lines to the plugin dependency section in the <code>grails-app/conf/BuildConfig.groovy</code> file:<p class="paragraph"/><div class="code"><pre>grails.project.dependency.resolution = &#123;<p class="paragraph"/>    plugins &#123;
-        // Other plugin dependencies<p class="paragraph"/>        compile ':rwt:1.0'
+<h2 id="rwtVersionConfiguration">3.5 RWT Version Configuration</h2>
+The current version of the plugin is based on RWT version 2.1. The required libraries are resolved
+from the Maven central repository using the default
+<a href="http://grails.org/doc/latest/guide/conf.html#ivy" target="blank">Grails dependency mechanism (Ivy)</a>.
+An application can override these dependencies manually to use a more recent version of RWT. This
+can be useful to test new milestone releases or use new service releases without having to wait for
+a new release of the Grails-RWT plugin.<p class="paragraph"/><blockquote class="warning">
+The internal mechanisms of the Grails RWT plugin are currently based on the API of version 2.1. If
+you use a new RWT version that comes with breaking API changes the plugin won't work anymore. In
+order to use the latest RWT version in this case a new release of the Grails RWT plugin is necessary.
+</blockquote><p class="paragraph"/>Here is an example configuration in the BuildConfig.groovy to use the RWT 2.2 milestone release:<p class="paragraph"/><div class="code"><pre>grails.project.dependency.resolution = &#123;<p class="paragraph"/>    dependencies &#123;
+        compile('org.eclipse.rap:org.eclipse.rap.rwt:2.2.0&#45;M1')
+        compile('org.eclipse.rap:org.eclipse.rap.jface:2.2.0&#45;M1')
+        compile('org.eclipse.rap:org.eclipse.rap.jface.databinding:2.2.0&#45;M1')
     &#125;
-&#125;</pre></div><p class="paragraph"/>The plugin will be installed automatically on the next invocation of a Grails command. Your IDE
-(e.g. <a href="http://grails.org/products/ggts" target="blank">STS/GGTS</a>) should also pick up the new installed plugin and should make the contained jar
-libraries available in your Grails project.
+&#125;</pre></div><p class="paragraph"/><blockquote class="note">
+The RWT JFace libs require three additional dependencies which are currently not present in the Maven
+central in the required version. Therefore, these dependencies are bundled in the lib folder of the
+RWT plugin. If you manually configure a newer RWT JFace version, you should make sure that the
+provided dependencies still satisfy the required version range of the RWT JFace libs. If they
+require new versions of the dependency you could grab the libs i.e. from the RAP target platform
+and put those in the lib folder of the project, so that they override the outdated versions
+provided by the RWT plugin.
+</blockquote>
+
 
 
                 <div style="clear:both;margin-top:15px;"></div>
                 
-                    <div class="toc-item prev-left"><a href="../../guide/introduction.html">&lt;&lt; <strong>1</strong><span>Introduction</span></a></div>
+                    <div class="toc-item prev-left"><a href="../../guide/gettingStarted.html">&lt;&lt; <strong>2</strong><span>Getting Started</span></a></div>
                 
-                    <div class="toc-item next-right"><a href="../../guide/configuration.html"><strong>3</strong><span>Configuration</span> >></a></div>
+                    <div class="toc-item next-right"><a href="../../guide/advancedTopics.html"><strong>4</strong><span>Advanced Topics</span> >></a></div>
                 
                 <div style="clear:both"></div>
             </div>

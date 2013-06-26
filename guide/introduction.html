@@ -2,7 +2,7 @@
                       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 <head>
-    <title>1 Introduction 0.1</title>
+    <title>1 Introduction 1.0</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <link rel="stylesheet" href="../css/main.css" type="text/css" media="screen, print" title="Style" charset="utf-8"/>
     <link rel="stylesheet" href="../css/pdf.css" type="text/css" media="print" title="PDF" charset="utf-8"/>
@@ -75,7 +75,7 @@ complete Grails framework stack with all its powerful features and syntactic DSL
 
                     <p><strong>Authors:</strong> Benjamin Wolff</p>
 
-                    <p><strong>Version:</strong> 0.1</p>
+                    <p><strong>Version:</strong> 1.0</p>
 
                     
                 </div>
@@ -96,47 +96,43 @@ complete Grails framework stack with all its powerful features and syntactic DSL
                 
 
 <h1 id="introduction">1 Introduction</h1>
-This plugin integrates the <a href="http://wiki.eclipse.org/WidgetToolkit" target="blank">RAP Widget Toolkit (RWT)</a> - a
-web-based Ajax/JavaScript widget library similar to <a href="http://www.eclipse.org/swt/" target="blank">SWT</a> - into your Grails
-application.<p class="paragraph"/>RWT is the web UI part of the <a href="http://www.eclipse.org/rap" target="blank">Remote Application Platform (RAP)</a> - an
+This plugin integrates the <a href="http://eclipse.org/rap/developers-guide/devguide.php?topic=rwt.html&version=2.1" target="blank">RAP Widget Toolkit (RWT)</a> - a
+web-based Ajax/JavaScript widget library similar to SWT - into your Grails application.<p class="paragraph"/>RWT is the web UI part of the <a href="http://www.eclipse.org/rap" target="blank">Remote Application Platform (RAP)</a> - an
 application framework based on the <a href="http://wiki.eclipse.org/Platform" target="blank">Eclipse platform</a>.
 RWT is provided in
-<a href="http://eclipse.org/rap/developers-guide/devguide.php?topic=advanced/rwt-standalone.html" target="blank">standalone</a>
+<a href="http://eclipse.org/rap/developers-guide/devguide.php?topic=rwt-standalone.html&version=2.1" target="blank">standalone</a>
 mode by this plugin, without the full RAP workbench or OSGi. Besides the SWT API, you can use the
 <a href="http://wiki.eclipse.org/JFace" target="blank">JFace API</a> to build your user interfaces.<p class="paragraph"/>RWT enables you to create highly interactive, desktop-like Ajax interfaces by only writing
 Java/Groovy code. In contrast to the popular <a href="http://developers.google.com/web-toolkit/" target="blank">Google Web Toolkit</a> (<a href="http://grails.org/plugin/gwt" target="blank">Grails plugin</a>),
-RWT is not compiled to JavaScript, but provides its own set of JavaScript widget which communicate
-transparantly with your server-side code. Since basically everything happens on the server-side
+RWT is not compiled to JavaScript, but provides its own set of JavaScript widget that communicate
+transparently with your server-side code. Since basically everything happens on the server-side
 (besides the rendering in the browser), it is not necessary to use DTOs or other transfer objects
 to display the data on the client. The domain objects can be seamlessly used in the UI logic (e.g.
 via <a href="http://wiki.eclipse.org/index.php/JFace_Data_Binding" target="blank">DataBinding</a>).<p class="paragraph"/>For more information please refer to the documentation of the particular technology.<p class="paragraph"/>The following pages will provide you with the necessary information to get started with Grails and
-RWT. Have fun!<p class="paragraph"/><h3>Grails &#38; RWT Version</h3><p class="paragraph"/>The plugin requires at least <a href="http://grails.org/Download" target="blank">Grails 2.0</a> to be used. The current version
-of this plugin ships with <a href="http://www.eclipse.org/rap/noteworthy/2.0/?build=M3" target="blank">RWT 2.0 M3</a>.<p class="paragraph"/><h3>License</h3><p class="paragraph"/>This plugin and its sources are made available under the terms of the <a href="http://www.apache.org/licenses/LICENSE-2.0.html" target="blank">Apache License, Version 2.0</a>.<p class="paragraph"/>The packaged RWT and JFace binary libraries in this plugin are made available under the terms of the <a href="http://www.eclipse.org/legal/epl-v10.html" target="blank">Eclipse Public License, Version 1.0</a>.<p class="paragraph"/><h3>Acknowledgments</h3><p class="paragraph"/>I'd like to give big thanks to the developers and the community of <a href="http://grails.org/" target="blank">Grails</a> and
+RWT. Have fun!<p class="paragraph"/><h3>Grails &#38; RWT Version</h3><p class="paragraph"/>The plugin requires at least <a href="http://grails.org/download" target="blank">Grails 2.0</a> and was currently build using
+Grails 2.2.3. The current version of this plugin ships with
+<a href="http://www.eclipse.org/rap/downloads/2.1/" target="blank">RWT 2.1</a> by default, but later RWT versions can be
+<a href="../guide/single.html#rwtVersionConfiguration" class="guide">configured instead</a>.<p class="paragraph"/><h3>License</h3><p class="paragraph"/>This plugin and its sources are made available under the terms of the <a href="http://www.apache.org/licenses/LICENSE-2.0.html" target="blank">Apache License, Version 2.0</a>.<p class="paragraph"/>The packaged RWT and JFace binary libraries in this plugin are made available under the terms of the <a href="http://www.eclipse.org/legal/epl-v10.html" target="blank">Eclipse Public License, Version 1.0</a>.<p class="paragraph"/><h3>Acknowledgments</h3><p class="paragraph"/>I'd like to give big thanks to the developers and the community of <a href="http://grails.org/" target="blank">Grails</a> and
 <a href="http://www.eclipse.org/rap/" target="blank">RAP/RWT</a> for making these wonderful technologies possible and for
 providing it for free! Keep up the excellent work!
 
 
 
 <h2 id="knownIssues">1.1 Known/Open Issues</h2>
-This section sums up a few issues that will be tackled/resolved in upcoming versions of this plugin.
-<ul class="star">
-<li><strong class="bold">Theming &#38; Branding</strong></li>
-<ul class="star">
-<li>Support the RWT custom CSS and theming options.</li>
-</ul>
-<li><strong class="bold">Configuration</strong></li>
-<ul class="star">
-<li>Allow to configure more aspects of RWT. Allow simple addition of resources etc.</li>
-</ul>
-<li><strong class="bold">Use Maven for the RWT dependencies</strong></li>
-<ul class="star">
-<li>Unfortunately there is no maven repository available that can server the required RWT dependency jar files. Currently, the required jars are bundled with the plugin. This is no ideal, as it doesn't allow to switch the RWT version. This situation can be improved if the jar files will become available in a public Maven repository.</li>
-</ul></ul><p class="paragraph"/>Please file any issues/requests/ideas in the <a href="http://github.com/bwolff/grails-rwt/issues" target="blank">GitHub issue tracker</a>.
+Please file any issues/requests/ideas in the <a href="http://github.com/bwolff/grails-rwt/issues" target="blank">GitHub issue tracker</a>.
 
 
 
 <h2 id="releaseNotes">1.2 Release Notes</h2>
 <ul class="star">
+<li>June 26, 2013</li>
+<ul class="star">
+<li>1.0 release</li>
+<li>Added support for configuring more RWT application aspects (e.g. themes).</li>
+<li>Updated to use the RWT 2.1 final release.</li>
+<li>RWT dependencies are now resolved from the Maven central repository.</li>
+<li>Improved developer's guide.</li>
+</ul>
 <li>November 18, 2012</li>
 <ul class="star">
 <li>First 0.1 release</li>

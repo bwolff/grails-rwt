@@ -2,7 +2,7 @@
                       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
     <head>
-        <title>The RAP Widget Toolkit (RWT) for Grails 0.1</title>
+        <title>The RAP Widget Toolkit (RWT) for Grails 1.0</title>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <link rel="stylesheet" href="../css/main.css" type="text/css" media="screen, print" title="Style" charset="utf-8" />
         <link rel="stylesheet" href="../css/pdf.css" type="text/css" media="print" title="PDF" charset="utf-8" />
@@ -61,7 +61,7 @@ complete Grails framework stack with all its powerful features and syntactic DSL
                         <div class="project">
                             <h1>The RAP Widget Toolkit (RWT) for Grails - Reference Documentation</h1>
                             <p><strong>Authors:</strong> Benjamin Wolff</p>
-                            <p><strong>Version:</strong> 0.1</p>
+                            <p><strong>Version:</strong> 1.0</p>
                             
                         </div>
 
@@ -93,7 +93,11 @@ complete Grails framework stack with all its powerful features and syntactic DSL
                             
                             <div class="toc-item" style="margin-left:10px"><a href="#entryPointConfiguration"><strong>3.2</strong><span>Entry Point Configuration</span></a></div>
                             
-                            <div class="toc-item" style="margin-left:10px"><a href="#loggingConfiguration"><strong>3.3</strong><span>Logging Configuration</span></a></div>
+                            <div class="toc-item" style="margin-left:10px"><a href="#themeConfiguration"><strong>3.3</strong><span>Theme Configuration</span></a></div>
+                            
+                            <div class="toc-item" style="margin-left:10px"><a href="#loggingConfiguration"><strong>3.4</strong><span>Logging Configuration</span></a></div>
+                            
+                            <div class="toc-item" style="margin-left:10px"><a href="#rwtVersionConfiguration"><strong>3.5</strong><span>RWT Version Configuration</span></a></div>
                             
                             <div class="toc-item" style="margin-left:0px"><a href="#advancedTopics"><strong>4</strong><span>Advanced Topics</span></a></div>
                             
@@ -103,47 +107,43 @@ complete Grails framework stack with all its powerful features and syntactic DSL
                         
 
 <h1 id="introduction">1 Introduction</h1>
-This plugin integrates the <a href="http://wiki.eclipse.org/WidgetToolkit" target="blank">RAP Widget Toolkit (RWT)</a> - a
-web-based Ajax/JavaScript widget library similar to <a href="http://www.eclipse.org/swt/" target="blank">SWT</a> - into your Grails
-application.<p class="paragraph"/>RWT is the web UI part of the <a href="http://www.eclipse.org/rap" target="blank">Remote Application Platform (RAP)</a> - an
+This plugin integrates the <a href="http://eclipse.org/rap/developers-guide/devguide.php?topic=rwt.html&version=2.1" target="blank">RAP Widget Toolkit (RWT)</a> - a
+web-based Ajax/JavaScript widget library similar to SWT - into your Grails application.<p class="paragraph"/>RWT is the web UI part of the <a href="http://www.eclipse.org/rap" target="blank">Remote Application Platform (RAP)</a> - an
 application framework based on the <a href="http://wiki.eclipse.org/Platform" target="blank">Eclipse platform</a>.
 RWT is provided in
-<a href="http://eclipse.org/rap/developers-guide/devguide.php?topic=advanced/rwt-standalone.html" target="blank">standalone</a>
+<a href="http://eclipse.org/rap/developers-guide/devguide.php?topic=rwt-standalone.html&version=2.1" target="blank">standalone</a>
 mode by this plugin, without the full RAP workbench or OSGi. Besides the SWT API, you can use the
 <a href="http://wiki.eclipse.org/JFace" target="blank">JFace API</a> to build your user interfaces.<p class="paragraph"/>RWT enables you to create highly interactive, desktop-like Ajax interfaces by only writing
 Java/Groovy code. In contrast to the popular <a href="http://developers.google.com/web-toolkit/" target="blank">Google Web Toolkit</a> (<a href="http://grails.org/plugin/gwt" target="blank">Grails plugin</a>),
-RWT is not compiled to JavaScript, but provides its own set of JavaScript widget which communicate
-transparantly with your server-side code. Since basically everything happens on the server-side
+RWT is not compiled to JavaScript, but provides its own set of JavaScript widget that communicate
+transparently with your server-side code. Since basically everything happens on the server-side
 (besides the rendering in the browser), it is not necessary to use DTOs or other transfer objects
 to display the data on the client. The domain objects can be seamlessly used in the UI logic (e.g.
 via <a href="http://wiki.eclipse.org/index.php/JFace_Data_Binding" target="blank">DataBinding</a>).<p class="paragraph"/>For more information please refer to the documentation of the particular technology.<p class="paragraph"/>The following pages will provide you with the necessary information to get started with Grails and
-RWT. Have fun!<p class="paragraph"/><h3>Grails &#38; RWT Version</h3><p class="paragraph"/>The plugin requires at least <a href="http://grails.org/Download" target="blank">Grails 2.0</a> to be used. The current version
-of this plugin ships with <a href="http://www.eclipse.org/rap/noteworthy/2.0/?build=M3" target="blank">RWT 2.0 M3</a>.<p class="paragraph"/><h3>License</h3><p class="paragraph"/>This plugin and its sources are made available under the terms of the <a href="http://www.apache.org/licenses/LICENSE-2.0.html" target="blank">Apache License, Version 2.0</a>.<p class="paragraph"/>The packaged RWT and JFace binary libraries in this plugin are made available under the terms of the <a href="http://www.eclipse.org/legal/epl-v10.html" target="blank">Eclipse Public License, Version 1.0</a>.<p class="paragraph"/><h3>Acknowledgments</h3><p class="paragraph"/>I'd like to give big thanks to the developers and the community of <a href="http://grails.org/" target="blank">Grails</a> and
+RWT. Have fun!<p class="paragraph"/><h3>Grails &#38; RWT Version</h3><p class="paragraph"/>The plugin requires at least <a href="http://grails.org/download" target="blank">Grails 2.0</a> and was currently build using
+Grails 2.2.3. The current version of this plugin ships with
+<a href="http://www.eclipse.org/rap/downloads/2.1/" target="blank">RWT 2.1</a> by default, but later RWT versions can be
+<a href="../guide/single.html#rwtVersionConfiguration" class="guide">configured instead</a>.<p class="paragraph"/><h3>License</h3><p class="paragraph"/>This plugin and its sources are made available under the terms of the <a href="http://www.apache.org/licenses/LICENSE-2.0.html" target="blank">Apache License, Version 2.0</a>.<p class="paragraph"/>The packaged RWT and JFace binary libraries in this plugin are made available under the terms of the <a href="http://www.eclipse.org/legal/epl-v10.html" target="blank">Eclipse Public License, Version 1.0</a>.<p class="paragraph"/><h3>Acknowledgments</h3><p class="paragraph"/>I'd like to give big thanks to the developers and the community of <a href="http://grails.org/" target="blank">Grails</a> and
 <a href="http://www.eclipse.org/rap/" target="blank">RAP/RWT</a> for making these wonderful technologies possible and for
 providing it for free! Keep up the excellent work!
 
 
 
 <h2 id="knownIssues">1.1 Known/Open Issues</h2>
-This section sums up a few issues that will be tackled/resolved in upcoming versions of this plugin.
-<ul class="star">
-<li><strong class="bold">Theming &#38; Branding</strong></li>
-<ul class="star">
-<li>Support the RWT custom CSS and theming options.</li>
-</ul>
-<li><strong class="bold">Configuration</strong></li>
-<ul class="star">
-<li>Allow to configure more aspects of RWT. Allow simple addition of resources etc.</li>
-</ul>
-<li><strong class="bold">Use Maven for the RWT dependencies</strong></li>
-<ul class="star">
-<li>Unfortunately there is no maven repository available that can server the required RWT dependency jar files. Currently, the required jars are bundled with the plugin. This is no ideal, as it doesn't allow to switch the RWT version. This situation can be improved if the jar files will become available in a public Maven repository.</li>
-</ul></ul><p class="paragraph"/>Please file any issues/requests/ideas in the <a href="http://github.com/bwolff/grails-rwt/issues" target="blank">GitHub issue tracker</a>.
+Please file any issues/requests/ideas in the <a href="http://github.com/bwolff/grails-rwt/issues" target="blank">GitHub issue tracker</a>.
 
 
 
 <h2 id="releaseNotes">1.2 Release Notes</h2>
 <ul class="star">
+<li>June 26, 2013</li>
+<ul class="star">
+<li>1.0 release</li>
+<li>Added support for configuring more RWT application aspects (e.g. themes).</li>
+<li>Updated to use the RWT 2.1 final release.</li>
+<li>RWT dependencies are now resolved from the Maven central repository.</li>
+<li>Improved developer's guide.</li>
+</ul>
 <li>November 18, 2012</li>
 <ul class="star">
 <li>First 0.1 release</li>
@@ -152,9 +152,11 @@ This section sums up a few issues that will be tackled/resolved in upcoming vers
 
 <h1 id="gettingStarted">2 Getting Started</h1>
 This short guide will get you started with all you need to know to create your first Grails-RWT
-application. You should be familiar with how to <a href="http://grails.org/doc/latest/guide/gettingStarted.html#creatingAnApplication" target="blank">create a Grails application</a>
+application. You should be familiar with how to
+<a href="http://grails.org/doc/latest/guide/gettingStarted.html#creatingAnApplication" target="blank">create a Grails application</a>
 and artifacts like <a href="http://grails.org/doc/latest/guide/GORM.html#quickStartGuide" target="blank">domain classes</a> and
-<a href="http://grails.org/doc/latest/guide/services.html" target="blank">services</a>.<p class="paragraph"/>The RWT setup process is based on the <a href="http://eclipse.org/rap/developers-guide/devguide.php?topic=advanced/rwt-standalone.html" target="blank">standalone guide</a>.
+<a href="http://grails.org/doc/latest/guide/services.html" target="blank">services</a>.<p class="paragraph"/>The RWT setup process is based on the
+<a href="http://www.eclipse.org/rap/developers-guide/devguide.php?topic=rwt-standalone.html&version=2.1" target="blank">standalone guide</a>.
 However, the Grails-RWT plugin does most of the setup for you, as you will see in this guide.<p class="paragraph"/>Start with creating an example Grails application and then follow the instructions below. The next
 sections assume that the applications is called <code>grails-rwt-example</code>. Replace the occurences in the example
 URLs with the actual name of your example application.<p class="paragraph"/><h3>Example Code</h3><p class="paragraph"/>There is an example project <a href="http://github.com/bwolff/grails-rwt-example" target="blank">available on GitHub</a> that
@@ -167,7 +169,7 @@ in the <a href="../guide/single.html#runApplication" class="guide">Running the A
 <h2 id="installation">2.1 Installation</h2>
 The plugin is installed using the default <a href="http://grails.org/doc/latest/guide/conf.html#pluginDependencies" target="blank">Grails plugin installation mechanism</a>.
 Simply add/modify the following lines to the plugin dependency section in the <code>grails-app/conf/BuildConfig.groovy</code> file:<p class="paragraph"/><div class="code"><pre>grails.project.dependency.resolution = &#123;<p class="paragraph"/>    plugins &#123;
-        // Other plugin dependencies<p class="paragraph"/>        compile ':rwt:0.1'
+        // Other plugin dependencies<p class="paragraph"/>        compile ':rwt:1.0'
     &#125;
 &#125;</pre></div><p class="paragraph"/>The plugin will be installed automatically on the next invocation of a Grails command. Your IDE
 (e.g. <a href="http://grails.org/products/ggts" target="blank">STS/GGTS</a>) should also pick up the new installed plugin and should make the contained jar
@@ -183,41 +185,42 @@ and other dependencies and functionalities are added/injected out of the box.<p 
 (in the <code>grails-app/services</code> sub-folder). To demonstrate the usage,
 another service (<code>FooService</code>) and a domain class (<code>Foo</code>) are used. They don't do anything useful and
 their code can be obtained from the example application, as described above. The comments in the code
-snippet highlight interesting points.<p class="paragraph"/><div class="code"><pre><span class="java&#45;keyword">package</span> grails.rwt.example<p class="paragraph"/><span class="java&#45;keyword">import</span> org.eclipse.jface.viewers.ArrayContentProvider
+snippet highlight interesting points.<p class="paragraph"/><div class="code"><pre><span class="java&#45;keyword">package</span> grails.rwt.example<p class="paragraph"/><span class="java&#45;keyword">import</span> org.eclipse.jface.layout.GridDataFactory
+<span class="java&#45;keyword">import</span> org.eclipse.jface.layout.GridLayoutFactory
+<span class="java&#45;keyword">import</span> org.eclipse.jface.viewers.ArrayContentProvider
 <span class="java&#45;keyword">import</span> org.eclipse.jface.viewers.LabelProvider
 <span class="java&#45;keyword">import</span> org.eclipse.jface.viewers.ListViewer
-<span class="java&#45;keyword">import</span> org.eclipse.rap.rwt.lifecycle.IEntryPoint
+<span class="java&#45;keyword">import</span> org.eclipse.rap.rwt.application.AbstractEntryPoint
 <span class="java&#45;keyword">import</span> org.eclipse.swt.SWT
 <span class="java&#45;keyword">import</span> org.eclipse.swt.events.SelectionAdapter
 <span class="java&#45;keyword">import</span> org.eclipse.swt.events.SelectionEvent
-<span class="java&#45;keyword">import</span> org.eclipse.swt.layout.GridData
-<span class="java&#45;keyword">import</span> org.eclipse.swt.layout.GridLayout
 <span class="java&#45;keyword">import</span> org.eclipse.swt.widgets.Button
+<span class="java&#45;keyword">import</span> org.eclipse.swt.widgets.Composite
 <span class="java&#45;keyword">import</span> org.eclipse.swt.widgets.Display
 <span class="java&#45;keyword">import</span> org.eclipse.swt.widgets.Label
-<span class="java&#45;keyword">import</span> org.eclipse.swt.widgets.List
-<span class="java&#45;keyword">import</span> org.eclipse.swt.widgets.Shell<p class="paragraph"/>// <span class="java&#45;quote">"Note the use of Groovy syntax"</span><p class="paragraph"/>class HelloEntryPointService <span class="java&#45;keyword">implements</span> IEntryPoint &#123; // <span class="java&#45;quote">"The service needs to implement IEntryPoint"</span><p class="paragraph"/>    def fooService // <span class="java&#45;quote">"Other services will get injected by Grails"</span><p class="paragraph"/>    @Override
-    <span class="java&#45;object">int</span> createUI() &#123;
-        log.info(<span class="java&#45;quote">"Creating RWT UI ..."</span>) // <span class="java&#45;quote">"Implicit logger object"</span><p class="paragraph"/>        Display display = <span class="java&#45;keyword">new</span> Display()
-        Shell shell = <span class="java&#45;keyword">new</span> Shell(display)
-        shell.setSize(500, 400)
-        shell.layout = <span class="java&#45;keyword">new</span> GridLayout()
-        shell.setText(<span class="java&#45;quote">"Hello RWT!"</span>)<p class="paragraph"/>        <span class="java&#45;keyword">final</span> Label label = <span class="java&#45;keyword">new</span> Label(shell, SWT.NONE)
-        label.layoutData = <span class="java&#45;keyword">new</span> GridData(SWT.FILL, SWT.CENTER, <span class="java&#45;keyword">true</span>, <span class="java&#45;keyword">false</span>)<p class="paragraph"/>        // <span class="java&#45;quote">"JFace is available"</span>
-        ListViewer viewer = <span class="java&#45;keyword">new</span> ListViewer(shell, SWT.V_SCROLL | SWT.H_SCROLL)
-        viewer.list.layoutData = <span class="java&#45;keyword">new</span> GridData(SWT.FILL, SWT.FILL, <span class="java&#45;keyword">true</span>, <span class="java&#45;keyword">true</span>)
+<span class="java&#45;keyword">import</span> org.eclipse.swt.widgets.Shell<p class="paragraph"/>// <span class="java&#45;quote">"Note the use of the Groovy syntax"</span><p class="paragraph"/>class HelloEntryPointService <span class="java&#45;keyword">extends</span> AbstractEntryPoint &#123; // <span class="java&#45;quote">"The service needs to implement EntryPoint"</span><p class="paragraph"/>    def fooService // <span class="java&#45;quote">"Other services will get injected by Grails"</span><p class="paragraph"/>    @Override
+    <span class="java&#45;keyword">protected</span> void createContents(Composite parent) &#123;
+        log.info(<span class="java&#45;quote">"Creating RWT UI ..."</span>) // <span class="java&#45;quote">"Implicit logger object"</span><p class="paragraph"/>        <span class="java&#45;keyword">final</span> Label label = <span class="java&#45;keyword">new</span> Label(parent, SWT.NONE)
+        GridDataFactory.swtDefaults().align(SWT.FILL, SWT.CENTER).grab(<span class="java&#45;keyword">true</span>, <span class="java&#45;keyword">false</span>).applyTo(label)<p class="paragraph"/>        // <span class="java&#45;quote">"JFace is available"</span>
+        ListViewer viewer = <span class="java&#45;keyword">new</span> ListViewer(parent, SWT.V_SCROLL | SWT.H_SCROLL)
+        GridDataFactory.swtDefaults().hint(500, 300).applyTo(viewer.list)
         viewer.contentProvider = ArrayContentProvider.instance
         viewer.labelProvider = <span class="java&#45;keyword">new</span> LabelProvider()
-        viewer.input = Foo.list() // <span class="java&#45;quote">"Use domain objects and GORM directly, no DTOs required!"</span><p class="paragraph"/>        Button button = <span class="java&#45;keyword">new</span> Button(shell, SWT.PUSH)
-        button.layoutData = <span class="java&#45;keyword">new</span> GridData(SWT.BEGINNING, SWT.CENTER, <span class="java&#45;keyword">false</span>, <span class="java&#45;keyword">false</span>)
+        viewer.input = Foo.list() // <span class="java&#45;quote">"Use domain objects and GORM, no DTOs required!"</span><p class="paragraph"/>        Button button = <span class="java&#45;keyword">new</span> Button(parent, SWT.PUSH)
+        GridDataFactory.swtDefaults().align(SWT.BEGINNING, SWT.CENTER).applyTo(button)
         button.text = <span class="java&#45;quote">"Click me!"</span>
         button.addSelectionListener(<span class="java&#45;keyword">new</span> SelectionAdapter() &#123;
             <span class="java&#45;object">Integer</span> num = 0<p class="paragraph"/>            @Override
             <span class="java&#45;keyword">public</span> void widgetSelected(SelectionEvent e) &#123;
                 label.text = fooService.serviceMethod(num++) // <span class="java&#45;quote">"Call methods of other services"</span>
             &#125;
-        &#125;)<p class="paragraph"/>        shell.open()
-        <span class="java&#45;keyword">return</span> 0
+        &#125;)
+    &#125;<p class="paragraph"/>    @Override
+    <span class="java&#45;keyword">protected</span> Shell createShell(Display display) &#123;
+        Shell shell = <span class="java&#45;keyword">new</span> Shell(display)
+        shell.setText(<span class="java&#45;quote">"Hello RWT!"</span>)
+        GridLayoutFactory.swtDefaults().applyTo(shell)
+        <span class="java&#45;keyword">return</span> shell
     &#125;
 &#125;</pre></div><p class="paragraph"/>According to the Grails conventions, a Spring bean called <code>helloEntryPointService</code> will be registered
 automatically on application start. The next step is to configure our newly created entry point.<p class="paragraph"/><blockquote class="note">
@@ -228,7 +231,7 @@ your application using a cleaner separation of concerns, i.e. by employing the M
 
 <h2 id="configureEntryPoint">2.3 Configuring the Entry Point</h2>
 The only thing that is missing now is the configuration of our new RWT entry point. This is done
-in an own <a href="http://grails.org/doc/latest/guide/conf.html#config" target="blank">configuration</a> block in the
+in a <a href="http://grails.org/doc/latest/guide/conf.html#config" target="blank">configuration</a> block in the
 <code>grails-app/conf/Config.groovy</code> file.<p class="paragraph"/><div class="code"><pre>// RWT configuration
 rwt &#123;<p class="paragraph"/>    // Entry points configuration
     entrypoints &#123;<p class="paragraph"/>        // Configuration of an entry point named 'hello', the relative URL path will be '/hello'.
@@ -239,7 +242,7 @@ rwt &#123;<p class="paragraph"/>    // Entry points configuration
     &#125;
 &#125;</pre></div><p class="paragraph"/>Here we simply specify our entry point as a block under <code>entrypoints</code> and provide the name of the
 entry point bean, which is described above. We can also specify a string that will be displayed as
-the browser's page title.<p class="paragraph"/>More information about the configuration of an RWT application and the entry points is available
+the browser's page title.<p class="paragraph"/>More information about the configuration of the RWT application and the entry points is available
 <a href="../guide/single.html#configuration" class="guide">here</a>.
 
 
@@ -264,13 +267,33 @@ explore the features that RWT provides.
 <h1 id="configuration">3 Configuration</h1>
 The RWT configuration goes into a special block in the <code>grails-app/conf/Config.groovy</code> file.<p class="paragraph"/><div class="code"><pre>rwt &#123;
     // RWT configuration goes here.
-&#125;</pre></div><p class="paragraph"/>There are two aspects that can be configured, the global RWT settings, and the settings
-specific to the single entry points.
+&#125;</pre></div><p class="paragraph"/>There are different aspects that can be configured, the global RWT application settings, the entry
+point settings, and the theme settings.<p class="paragraph"/>For more information about RWT in general please have a look at the
+<a href="http://www.eclipse.org/rap/developers-guide/index.php?version=2.1" target="blank">RAP/RWT 2.1 developer&#39;s guide</a>.<p class="paragraph"/><blockquote class="note">
+<strong class="bold">Classpath Resources</strong><p class="paragraph"/>Some configuration settings (e.g. theme CSS files) expect a relative path to a file that is visible
+on the classpath. The easiest way is to put your static file resources in a
+sub-folder of <code>src/java</code> or <code>src/groovy</code> of your Grails application. This way the files are
+available in the classpath without any additional configuration.<p class="paragraph"/>This also enables you to reference files that are provided in the classpath by other plugins or
+libraries.
+</blockquote>
 
 
 
 <h2 id="applicationConfiguration">3.1 Application Configuration</h2>
-Options to configure global aspects of the RWT application will come in future versions of this plugin.
+There are a few configuration settings available that configure global aspects of a RWT application. Currently, all the documented settings here are optional. Therefore, you don't have to specify any of them if you don't have any special requirements.<p class="paragraph"/>The global RWT configuration go directly into the <code>rwt</code> configuration block in the Config.groovy:
+<div class="code"><pre>rwt &#123;
+    // Global RWT application configuration goes here.
+&#125;</pre></div><p class="paragraph"/>The currently supported settings are:
+<ul class="star">
+<li><strong class="bold">operationMode</strong> - The <a href="http://www.eclipse.org/rap/developers-guide/devguide.php?topic=application-setup.html&version=2.1#compat" target="blank">RWT operation mode</a> as a string  <em class="italic">(optional)</em> . Currently supported values are 'JEE_COMPATIBILITY'  <em class="italic">(default)</em> , 'SWT_COMPATIBILITY', and 'SESSION_FAILOVER'.</li>
+<li><strong class="bold">phaseListeners</strong> - A list of either Class instances or the names (string) of a registered Spring bean that implement the <a href="http://download.eclipse.org/rt/rap/doc/2.1/guide/reference/api/org/eclipse/rap/rwt/lifecycle/PhaseListener.html" target="blank">PhaseListener interface</a>  <em class="italic">(optional)</em> . In case a Class instance is used the class needs to have a public default constructor without arguments. The list can also contain Class instances and bean names at the same time.</li>
+<li><strong class="bold">themableWidgets</strong> - A list of Class instances of themable custom widgets  <em class="italic">(optional)</em> . For more information about custom widgets please see the <a href="http://www.eclipse.org/rap/developers-guide/devguide.php?topic=custom-widget.html&version=2.1" target="blank">RWT documentation</a> and the <a href="http://download.eclipse.org/rt/rap/doc/2.1/guide/reference/api/org/eclipse/rap/rwt/application/Application.html#addThemableWidget%28java.lang.Class%29" target="blank">RWT JavaDocs</a>.</li>
+</ul><p class="paragraph"/>The following snippet shows an example configuration of all currently available RWT application
+configuration values:<p class="paragraph"/><div class="code"><pre>rwt &#123;
+    operationMode = 'SWT_COMPATIBILITY' // <span class="java&#45;quote">"Required to use blocking SWT/JFace APIs like Display&#35;sleep()"</span>
+    phaseListeners = &#91;org.example.MyPhaseListener, 'myPhaseListenerBean'&#93; // <span class="java&#45;quote">"<span class="java&#45;object">Class</span> instances and bean names can be mixed."</span>
+    themableWidgets = &#91;org.example.MyThemableWidget1, org.exampleMyThemableWidget2&#93;
+&#125;</pre></div>
 
 
 <h2 id="entryPointConfiguration">3.2 Entry Point Configuration</h2>
@@ -279,38 +302,111 @@ configuration block within the <code>rwt</code> section.<p class="paragraph"/><d
     entrypoints &#123;
         hello &#123;
             bean = 'entryPointBean'
-            pageTitle = 'Hello RWT World!'
+            &#8230;
         &#125;
     &#125;
 &#125;</pre></div><p class="paragraph"/>The given example configures an entry point with the name <code>hello</code>. By default, this entry point will
 be mapped to the relative URL path '/hello'. The following settings need to be provided for an
 entry point configuration:
 <ul class="star">
-<li><strong class="bold">bean</strong> - The name (string) of the bean that implements the IEntryPoint interface (mandatory).</li>
-<li><strong class="bold">pageTitle</strong> - The title (string) that will be displayed as the browser's title (optional).</li>
+<li><strong class="bold">bean</strong> - The name (string) of the registered Spring bean that implements the EntryPoint interface  <em class="italic">(mandatory)</em> .</li>
+<li><strong class="bold">pageTitle</strong> - The title (string) that will be displayed as the browser's title  <em class="italic">(optional)</em> .</li>
+<li><strong class="bold">favicon</strong> - Relative path to an .ico image that will be used as the favicon for the entry point  <em class="italic">(optional)</em> .</li>
+<li><strong class="bold">themeId</strong> - The ID of the registered theme  <em class="italic">(optional)</em> . Please see the <a href="../guide/single.html#themeConfiguration" class="guide">theme configuration section</a> in this guide.</li>
+<li><strong class="bold">headHtml</strong> - Relative path to a file containing HTML  <em class="italic">(optional)</em> . The content of the file will be added to the &#60;head&#62; element of the host page. Please see the <a href="http://download.eclipse.org/rt/rap/doc/2.1/guide/reference/api/org/eclipse/rap/rwt/client/WebClient.html#HEAD_HTML" target="blank">RWT JavaDocs</a> for more information.</li>
+<li><strong class="bold">bodyHtml</strong> - Relative path to a file containing HTML  <em class="italic">(optional)</em> . The content of the file will be added to the &#60;body&#62; element of the host page. Please see the <a href="http://download.eclipse.org/rt/rap/doc/2.1/guide/reference/api/org/eclipse/rap/rwt/client/WebClient.html#BODY_HTML" target="blank">RWT JavaDocs</a> for more information.</li>
 </ul><p class="paragraph"/>A Grails-RWT application can contain an arbitrary number of entry points, which usually refer to
 different entry point beans.<p class="paragraph"/><div class="code"><pre>rwt &#123;
     entrypoints &#123;
         hello &#123;
             bean = 'helloEntryPoint'
-            pageTitle = 'Hello RWT World!'
+            &#8230;
         &#125;<p class="paragraph"/>        helloAgain &#123;
             bean = 'helloAgainEntryPoint'
-            pageTitle = 'Hello again, RWT World!'
+            &#8230;
         &#125;
     &#125;
-&#125;</pre></div><p class="paragraph"/>In this example there will be two entry points accessible under '/hello' and '/helloAgain'.<p class="paragraph"/>For customizing the default URL mapping behaviour please see the <a href="../guide/single.html#advancedTopics" class="guide">Advanced Topics</a> chapter.
+&#125;</pre></div><p class="paragraph"/>In this example there will be two entry points accessible under '/hello' and '/helloAgain'. For
+customizing the default URL mapping behaviour please see the <a href="../guide/single.html#advancedTopics" class="guide">Advanced Topics</a>
+chapter.<p class="paragraph"/>Shown below is an example with all currently available entry point configuration values:<p class="paragraph"/><div class="code"><pre>rwt &#123;
+    entrypoints &#123;
+        hello &#123;
+            bean = 'helloEntryPointService'
+            pageTitle = 'Hello RWT World!'
+            favicon = 'icons/favicon.ico'
+            themeId = 'mytheme'
+            headHtml = 'html/head.html'
+            bodyHtml = 'html/body.html'
+        &#125;
+    &#125;
+&#125;</pre></div>
 
 
 
-<h2 id="loggingConfiguration">3.3 Logging Configuration</h2>
+<h2 id="themeConfiguration">3.3 Theme Configuration</h2>
+The plugin supports a simply configuration of
+<a href="http://www.eclipse.org/rap/developers-guide/devguide.php?topic=theming.html&version=2.1" target="blank">RWT themes and theme contributions</a>
+that can be used in the entry point configuration. The themes are provided via CSS files and
+configured via relative paths in the application's classpath. Shown below is an example theme
+configuration:<p class="paragraph"/><div class="code"><pre>rwt &#123;
+    themes &#123;
+        rwtdefault = 'themes/<span class="java&#45;keyword">default</span>.css'
+        mytheme = 'themes/mytheme.css'
+        mytheme2 = &#91;'themes/mytheme2.css', 'themes/mytheme3.css'&#93;
+    &#125;
+&#125;</pre></div><p class="paragraph"/>Themes are configured in the <code>themes</code> block, each entry in this block represents a different theme,
+the name of the entry is the theme ID that is used to reference it in the <a href="../guide/single.html#entryPointConfiguration" class="guide">entry point configuration</a>.
+A special theme name is <code>rwtdefault</code>. This name references the default RWT theme and the CSS files
+provided for this name are treated as contributions and will be merged into the RWT default theme.
+Additions to this theme are automatically applied to your widgets without the need to add a theme
+configuration to your entry point. The example shown above also creates the two custom themes with
+the ID <code>mytheme</code> and <code>mytheme2</code>.<p class="paragraph"/>As mentioned before, the values of the themes are paths denoting a CSS file on the classpath. The
+value can be a single path string or a list of path strings. In case a list of paths is provided,
+the first file will be used as the main theme file and the subsequent files are treated as contributions
+to this theme file. The order in which they are specified determine the order in which the
+contributions are applied. This mechanism allows it to enhance your own themes with theme additions coming
+from other plugins or libraries, as long as the CSS files are accessible via the classpath.<p class="paragraph"/>For more information about theming in RWT and what widgets and properties are supported in the CSS
+please refer to the
+<a href="http://download.eclipse.org/rt/rap/doc/2.1/guide/reference/theming/index.html" target="blank">RWT theming reference</a>.
+
+
+
+<h2 id="loggingConfiguration">3.4 Logging Configuration</h2>
 The plugin logs some information in the INFO and DEBUG levels. To increase the verbosity of the
 log messages you can enable the debug level for some plugin artifacts. Add the following lines to
-the <a href="http://grails.org/doc/latest/guide/conf.html#logging" target="blank">log4j section</a> in your <code>Config.groovy</code> file:<p class="paragraph"/><div class="code"><pre>log4j = &#123;
+the <a href="http://grails.org/doc/latest/guide/conf.html#logging" target="blank">log4j section</a> of your <code>Config.groovy</code> file:<p class="paragraph"/><div class="code"><pre>log4j = &#123;
     // Other logging configurations<p class="paragraph"/>    debug 'grails.app.conf.RwtPluginBootStrap'
     debug 'grails.plugins.rwt'
+    debug 'grails.rwt'
     debug 'RwtGrailsPlugin'
 &#125;</pre></div>
+
+
+<h2 id="rwtVersionConfiguration">3.5 RWT Version Configuration</h2>
+The current version of the plugin is based on RWT version 2.1. The required libraries are resolved
+from the Maven central repository using the default
+<a href="http://grails.org/doc/latest/guide/conf.html#ivy" target="blank">Grails dependency mechanism (Ivy)</a>.
+An application can override these dependencies manually to use a more recent version of RWT. This
+can be useful to test new milestone releases or use new service releases without having to wait for
+a new release of the Grails-RWT plugin.<p class="paragraph"/><blockquote class="warning">
+The internal mechanisms of the Grails RWT plugin are currently based on the API of version 2.1. If
+you use a new RWT version that comes with breaking API changes the plugin won't work anymore. In
+order to use the latest RWT version in this case a new release of the Grails RWT plugin is necessary.
+</blockquote><p class="paragraph"/>Here is an example configuration in the BuildConfig.groovy to use the RWT 2.2 milestone release:<p class="paragraph"/><div class="code"><pre>grails.project.dependency.resolution = &#123;<p class="paragraph"/>    dependencies &#123;
+        compile('org.eclipse.rap:org.eclipse.rap.rwt:2.2.0&#45;M1')
+        compile('org.eclipse.rap:org.eclipse.rap.jface:2.2.0&#45;M1')
+        compile('org.eclipse.rap:org.eclipse.rap.jface.databinding:2.2.0&#45;M1')
+    &#125;
+&#125;</pre></div><p class="paragraph"/><blockquote class="note">
+The RWT JFace libs require three additional dependencies which are currently not present in the Maven
+central in the required version. Therefore, these dependencies are bundled in the lib folder of the
+RWT plugin. If you manually configure a newer RWT JFace version, you should make sure that the
+provided dependencies still satisfy the required version range of the RWT JFace libs. If they
+require new versions of the dependency you could grab the libs i.e. from the RAP target platform
+and put those in the lib folder of the project, so that they override the outdated versions
+provided by the RWT plugin.
+</blockquote>
+
 
 
 <h1 id="advancedTopics">4 Advanced Topics</h1>
@@ -323,6 +419,7 @@ file:<p class="paragraph"/><div class="code"><pre>class UrlMappings &#123;<p cla
         // Other mapping configurations<p class="paragraph"/>        <span class="java&#45;quote">"/"</span>(uri: <span class="java&#45;quote">"/hello"</span>)
     &#125;
 &#125;</pre></div><p class="paragraph"/>Now the RWT application is reachable via: <code>http://server/foo</code>
+
 
                     </div>
                 </td>

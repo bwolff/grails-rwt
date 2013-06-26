@@ -2,7 +2,7 @@
                       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 <head>
-    <title>2.2 Creating the Entry Point Bean 0.1</title>
+    <title>2.2 Creating the Entry Point Bean 1.0</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <link rel="stylesheet" href="../css/main.css" type="text/css" media="screen, print" title="Style" charset="utf-8"/>
     <link rel="stylesheet" href="../css/pdf.css" type="text/css" media="print" title="PDF" charset="utf-8"/>
@@ -77,7 +77,7 @@ complete Grails framework stack with all its powerful features and syntactic DSL
 
                     <p><strong>Authors:</strong> Benjamin Wolff</p>
 
-                    <p><strong>Version:</strong> 0.1</p>
+                    <p><strong>Version:</strong> 1.0</p>
 
                     
                 </div>
@@ -95,41 +95,42 @@ and other dependencies and functionalities are added/injected out of the box.<p 
 (in the <code>grails-app/services</code> sub-folder). To demonstrate the usage,
 another service (<code>FooService</code>) and a domain class (<code>Foo</code>) are used. They don't do anything useful and
 their code can be obtained from the example application, as described above. The comments in the code
-snippet highlight interesting points.<p class="paragraph"/><div class="code"><pre><span class="java&#45;keyword">package</span> grails.rwt.example<p class="paragraph"/><span class="java&#45;keyword">import</span> org.eclipse.jface.viewers.ArrayContentProvider
+snippet highlight interesting points.<p class="paragraph"/><div class="code"><pre><span class="java&#45;keyword">package</span> grails.rwt.example<p class="paragraph"/><span class="java&#45;keyword">import</span> org.eclipse.jface.layout.GridDataFactory
+<span class="java&#45;keyword">import</span> org.eclipse.jface.layout.GridLayoutFactory
+<span class="java&#45;keyword">import</span> org.eclipse.jface.viewers.ArrayContentProvider
 <span class="java&#45;keyword">import</span> org.eclipse.jface.viewers.LabelProvider
 <span class="java&#45;keyword">import</span> org.eclipse.jface.viewers.ListViewer
-<span class="java&#45;keyword">import</span> org.eclipse.rap.rwt.lifecycle.IEntryPoint
+<span class="java&#45;keyword">import</span> org.eclipse.rap.rwt.application.AbstractEntryPoint
 <span class="java&#45;keyword">import</span> org.eclipse.swt.SWT
 <span class="java&#45;keyword">import</span> org.eclipse.swt.events.SelectionAdapter
 <span class="java&#45;keyword">import</span> org.eclipse.swt.events.SelectionEvent
-<span class="java&#45;keyword">import</span> org.eclipse.swt.layout.GridData
-<span class="java&#45;keyword">import</span> org.eclipse.swt.layout.GridLayout
 <span class="java&#45;keyword">import</span> org.eclipse.swt.widgets.Button
+<span class="java&#45;keyword">import</span> org.eclipse.swt.widgets.Composite
 <span class="java&#45;keyword">import</span> org.eclipse.swt.widgets.Display
 <span class="java&#45;keyword">import</span> org.eclipse.swt.widgets.Label
-<span class="java&#45;keyword">import</span> org.eclipse.swt.widgets.List
-<span class="java&#45;keyword">import</span> org.eclipse.swt.widgets.Shell<p class="paragraph"/>// <span class="java&#45;quote">"Note the use of Groovy syntax"</span><p class="paragraph"/>class HelloEntryPointService <span class="java&#45;keyword">implements</span> IEntryPoint &#123; // <span class="java&#45;quote">"The service needs to implement IEntryPoint"</span><p class="paragraph"/>    def fooService // <span class="java&#45;quote">"Other services will get injected by Grails"</span><p class="paragraph"/>    @Override
-    <span class="java&#45;object">int</span> createUI() &#123;
-        log.info(<span class="java&#45;quote">"Creating RWT UI ..."</span>) // <span class="java&#45;quote">"Implicit logger object"</span><p class="paragraph"/>        Display display = <span class="java&#45;keyword">new</span> Display()
-        Shell shell = <span class="java&#45;keyword">new</span> Shell(display)
-        shell.setSize(500, 400)
-        shell.layout = <span class="java&#45;keyword">new</span> GridLayout()
-        shell.setText(<span class="java&#45;quote">"Hello RWT!"</span>)<p class="paragraph"/>        <span class="java&#45;keyword">final</span> Label label = <span class="java&#45;keyword">new</span> Label(shell, SWT.NONE)
-        label.layoutData = <span class="java&#45;keyword">new</span> GridData(SWT.FILL, SWT.CENTER, <span class="java&#45;keyword">true</span>, <span class="java&#45;keyword">false</span>)<p class="paragraph"/>        // <span class="java&#45;quote">"JFace is available"</span>
-        ListViewer viewer = <span class="java&#45;keyword">new</span> ListViewer(shell, SWT.V_SCROLL | SWT.H_SCROLL)
-        viewer.list.layoutData = <span class="java&#45;keyword">new</span> GridData(SWT.FILL, SWT.FILL, <span class="java&#45;keyword">true</span>, <span class="java&#45;keyword">true</span>)
+<span class="java&#45;keyword">import</span> org.eclipse.swt.widgets.Shell<p class="paragraph"/>// <span class="java&#45;quote">"Note the use of the Groovy syntax"</span><p class="paragraph"/>class HelloEntryPointService <span class="java&#45;keyword">extends</span> AbstractEntryPoint &#123; // <span class="java&#45;quote">"The service needs to implement EntryPoint"</span><p class="paragraph"/>    def fooService // <span class="java&#45;quote">"Other services will get injected by Grails"</span><p class="paragraph"/>    @Override
+    <span class="java&#45;keyword">protected</span> void createContents(Composite parent) &#123;
+        log.info(<span class="java&#45;quote">"Creating RWT UI ..."</span>) // <span class="java&#45;quote">"Implicit logger object"</span><p class="paragraph"/>        <span class="java&#45;keyword">final</span> Label label = <span class="java&#45;keyword">new</span> Label(parent, SWT.NONE)
+        GridDataFactory.swtDefaults().align(SWT.FILL, SWT.CENTER).grab(<span class="java&#45;keyword">true</span>, <span class="java&#45;keyword">false</span>).applyTo(label)<p class="paragraph"/>        // <span class="java&#45;quote">"JFace is available"</span>
+        ListViewer viewer = <span class="java&#45;keyword">new</span> ListViewer(parent, SWT.V_SCROLL | SWT.H_SCROLL)
+        GridDataFactory.swtDefaults().hint(500, 300).applyTo(viewer.list)
         viewer.contentProvider = ArrayContentProvider.instance
         viewer.labelProvider = <span class="java&#45;keyword">new</span> LabelProvider()
-        viewer.input = Foo.list() // <span class="java&#45;quote">"Use domain objects and GORM directly, no DTOs required!"</span><p class="paragraph"/>        Button button = <span class="java&#45;keyword">new</span> Button(shell, SWT.PUSH)
-        button.layoutData = <span class="java&#45;keyword">new</span> GridData(SWT.BEGINNING, SWT.CENTER, <span class="java&#45;keyword">false</span>, <span class="java&#45;keyword">false</span>)
+        viewer.input = Foo.list() // <span class="java&#45;quote">"Use domain objects and GORM, no DTOs required!"</span><p class="paragraph"/>        Button button = <span class="java&#45;keyword">new</span> Button(parent, SWT.PUSH)
+        GridDataFactory.swtDefaults().align(SWT.BEGINNING, SWT.CENTER).applyTo(button)
         button.text = <span class="java&#45;quote">"Click me!"</span>
         button.addSelectionListener(<span class="java&#45;keyword">new</span> SelectionAdapter() &#123;
             <span class="java&#45;object">Integer</span> num = 0<p class="paragraph"/>            @Override
             <span class="java&#45;keyword">public</span> void widgetSelected(SelectionEvent e) &#123;
                 label.text = fooService.serviceMethod(num++) // <span class="java&#45;quote">"Call methods of other services"</span>
             &#125;
-        &#125;)<p class="paragraph"/>        shell.open()
-        <span class="java&#45;keyword">return</span> 0
+        &#125;)
+    &#125;<p class="paragraph"/>    @Override
+    <span class="java&#45;keyword">protected</span> Shell createShell(Display display) &#123;
+        Shell shell = <span class="java&#45;keyword">new</span> Shell(display)
+        shell.setText(<span class="java&#45;quote">"Hello RWT!"</span>)
+        GridLayoutFactory.swtDefaults().applyTo(shell)
+        <span class="java&#45;keyword">return</span> shell
     &#125;
 &#125;</pre></div><p class="paragraph"/>According to the Grails conventions, a Spring bean called <code>helloEntryPointService</code> will be registered
 automatically on application start. The next step is to configure our newly created entry point.<p class="paragraph"/><blockquote class="note">
