@@ -19,6 +19,10 @@ complete Grails framework stack with all its powerful features and syntactic DSL
     def issueManagement = [ system: "github", url: "https://github.com/bwolff/grails-rwt/issues" ]
     def scm = [ url: "https://github.com/bwolff/grails-rwt/" ]
 
+    def pluginExcludes = [
+        "web-app/"
+    ]
+    
     def doWithWebDescriptor = { xml ->
         // If there is no RWT entry point configured, don't register the RWT servlet.
         final entryPointHelper = new EntryPointConfigurationHelper(application.config)
