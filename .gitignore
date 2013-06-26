@@ -4,6 +4,7 @@ rwt-resources
 *.log
 eclipse
 .settings
+.groovy
 plugin.xml
 *.zip
 web-app
