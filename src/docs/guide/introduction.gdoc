@@ -24,7 +24,7 @@ RWT. Have fun!
 h3. Grails & RWT Version
 
 The plugin requires at least [Grails 2.0|http://grails.org/download] and was currently build using
-Grails 2.2.1. The current version of this plugin ships with
+Grails 2.2.3. The current version of this plugin ships with
 [RWT 2.1|http://www.eclipse.org/rap/downloads/2.1/] by default, but later RWT versions can be
 [configured instead|guide:rwtVersionConfiguration].
 
