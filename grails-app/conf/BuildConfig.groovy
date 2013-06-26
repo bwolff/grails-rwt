@@ -13,9 +13,9 @@ grails.project.dependency.resolution = {
 	}
 
     dependencies {
-        compile('org.eclipse.rap:org.eclipse.rap.rwt:2.1.0-M2')
-        compile('org.eclipse.rap:org.eclipse.rap.jface:2.1.0-M2')
-        compile('org.eclipse.rap:org.eclipse.rap.jface.databinding:2.1.0-M2')
+        compile('org.eclipse.rap:org.eclipse.rap.rwt:2.1.0')
+        compile('org.eclipse.rap:org.eclipse.rap.jface:2.1.0')
+        compile('org.eclipse.rap:org.eclipse.rap.jface.databinding:2.1.0')
     }
 
 	plugins {
