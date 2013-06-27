@@ -18,7 +18,7 @@ import org.eclipse.jface.layout.GridLayoutFactory
 import org.eclipse.jface.viewers.ArrayContentProvider
 import org.eclipse.jface.viewers.LabelProvider
 import org.eclipse.jface.viewers.ListViewer
-import org.eclipse.rap.rwt.application.AbstractEntryPoint
+import org.eclipse.rap.rwt.application.EntryPoint
 import org.eclipse.swt.SWT
 import org.eclipse.swt.events.SelectionAdapter
 import org.eclipse.swt.events.SelectionEvent
@@ -30,25 +30,30 @@ import org.eclipse.swt.widgets.Shell
 
 // "Note the use of the Groovy syntax"
 
-class HelloEntryPointService extends AbstractEntryPoint { // "The service needs to implement EntryPoint"
+class HelloEntryPointService implements EntryPoint { // "The service needs to implement EntryPoint"
 
     def fooService // "Other services will get injected by Grails"
 
     @Override
-    protected void createContents(Composite parent) {
+    public int createUI() {
         log.info("Creating RWT UI ...") // "Implicit logger object"
 
-        final Label label = new Label(parent, SWT.NONE)
+        Display display = new Display()
+        Shell shell = new Shell(display)
+        shell.setText("Hello RWT!")
+        GridLayoutFactory.swtDefaults().applyTo(shell)
+
+        final Label label = new Label(shell, SWT.NONE)
         GridDataFactory.swtDefaults().align(SWT.FILL, SWT.CENTER).grab(true, false).applyTo(label)
 
         // "JFace is available"
-        ListViewer viewer = new ListViewer(parent, SWT.V_SCROLL | SWT.H_SCROLL)
+        ListViewer viewer = new ListViewer(shell, SWT.V_SCROLL | SWT.H_SCROLL)
         GridDataFactory.swtDefaults().hint(500, 300).applyTo(viewer.list)
         viewer.contentProvider = ArrayContentProvider.instance
         viewer.labelProvider = new LabelProvider()
         viewer.input = Foo.list() // "Use domain objects and GORM, no DTOs required!"
 
-        Button button = new Button(parent, SWT.PUSH)
+        Button button = new Button(shell, SWT.PUSH)
         GridDataFactory.swtDefaults().align(SWT.BEGINNING, SWT.CENTER).applyTo(button)
         button.text = "Click me!"
         button.addSelectionListener(new SelectionAdapter() {
@@ -59,14 +64,19 @@ class HelloEntryPointService extends AbstractEntryPoint { // "The service needs 
                 label.text = fooService.serviceMethod(num++) // "Call methods of other services"
             }
         })
-    }
 
-    @Override
-    protected Shell createShell(Display display) {
-        Shell shell = new Shell(display)
-        shell.setText("Hello RWT!")
-        GridLayoutFactory.swtDefaults().applyTo(shell)
-        return shell
+        // "Open the shell and start the UI event handling queue"
+        shell.pack()
+        shell.open()
+
+        while(!shell.isDisposed()) {
+            if(!display.readAndDispatch()) {
+                display.sleep()
+            }
+        }
+        display.dispose()
+
+        return 0;
     }
 }
 {code}
