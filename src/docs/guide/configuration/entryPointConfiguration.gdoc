@@ -16,7 +16,7 @@ The given example configures an entry point with the name @hello@. By default, t
 be mapped to the relative URL path '/hello'. The following settings need to be provided for an
 entry point configuration:
 
-* *bean* - The name (string) of the registered Spring bean that implements the EntryPoint interface _(mandatory)_.
+* *bean* - The name (string) of the registered Spring bean that implements the EntryPoint interface _(required)_.
 * *pageTitle* - The title (string) that will be displayed as the browser's title _(optional)_.
 * *favicon* - Relative path to an .ico image that will be used as the favicon for the entry point _(optional)_.
 * *themeId* - The ID of the registered theme _(optional)_. Please see the [theme configuration section|guide:themeConfiguration] in this guide.
