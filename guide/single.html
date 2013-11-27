@@ -2,7 +2,7 @@
                       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
     <head>
-        <title>The RAP Widget Toolkit (RWT) for Grails 1.0</title>
+        <title>The RAP Widget Toolkit (RWT) for Grails 1.0.1</title>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <link rel="stylesheet" href="../css/main.css" type="text/css" media="screen, print" title="Style" charset="utf-8" />
         <link rel="stylesheet" href="../css/pdf.css" type="text/css" media="print" title="PDF" charset="utf-8" />
@@ -61,7 +61,7 @@ complete Grails framework stack with all its powerful features and syntactic DSL
                         <div class="project">
                             <h1>The RAP Widget Toolkit (RWT) for Grails - Reference Documentation</h1>
                             <p><strong>Authors:</strong> Benjamin Wolff</p>
-                            <p><strong>Version:</strong> 1.0</p>
+                            <p><strong>Version:</strong> 1.0.1</p>
                             
                         </div>
 
@@ -136,6 +136,11 @@ Please file any issues/requests/ideas in the <a href="http://github.com/bwolff/g
 
 <h2 id="releaseNotes">1.2 Release Notes</h2>
 <ul class="star">
+<li>November 27, 2013</li>
+<ul class="star">
+<li>1.0.1 release</li>
+<li>Fixed <a href="https://github.com/bwolff/grails-rwt/issues/7" target="blank">issue #7</a></li>
+</ul>
 <li>June 26, 2013</li>
 <ul class="star">
 <li>1.0 release</li>
@@ -313,7 +318,7 @@ configuration block within the <code>rwt</code> section.<p class="paragraph"/><d
 be mapped to the relative URL path '/hello'. The following settings need to be provided for an
 entry point configuration:
 <ul class="star">
-<li><strong class="bold">bean</strong> - The name (string) of the registered Spring bean that implements the EntryPoint interface  <em class="italic">(mandatory)</em> .</li>
+<li><strong class="bold">bean</strong> - The name (string) of the registered Spring bean that implements the EntryPoint interface  <em class="italic">(required)</em> .</li>
 <li><strong class="bold">pageTitle</strong> - The title (string) that will be displayed as the browser's title  <em class="italic">(optional)</em> .</li>
 <li><strong class="bold">favicon</strong> - Relative path to an .ico image that will be used as the favicon for the entry point  <em class="italic">(optional)</em> .</li>
 <li><strong class="bold">themeId</strong> - The ID of the registered theme  <em class="italic">(optional)</em> . Please see the <a href="../guide/single.html#themeConfiguration" class="guide">theme configuration section</a> in this guide.</li>
