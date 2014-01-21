@@ -1,4 +1,4 @@
-This plugin integrates the [RAP Widget Toolkit (RWT)|http://eclipse.org/rap/developers-guide/devguide.php?topic=rwt.html&version=2.1] - a
+This plugin integrates the [RAP Widget Toolkit (RWT)|http://eclipse.org/rap/developers-guide/devguide.php?topic=rwt.html&version=2.2] - a
 web-based Ajax/JavaScript widget library similar to SWT - into your Grails application.
 
 RWT is the web UI part of the [Remote Application Platform (RAP)|http://www.eclipse.org/rap] - an
@@ -23,9 +23,9 @@ RWT. Have fun!
 
 h3. Grails & RWT Version
 
-The plugin requires at least [Grails 2.0|http://grails.org/download] and was currently build using
-Grails 2.2.3. The current version of this plugin ships with
-[RWT 2.1|http://www.eclipse.org/rap/downloads/2.1/] by default, but later RWT versions can be
+The plugin requires at least [Grails 2.0|http://grails.org/download] and was currently built using
+Grails 2.3.5. The current version of this plugin ships with
+[RWT 2.2|http://www.eclipse.org/rap/downloads/2.2/] by default, but newer RWT versions can be
 [configured instead|guide:rwtVersionConfiguration].
 
 h3. License
